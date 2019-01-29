@@ -26,6 +26,16 @@ public class bst<K extends Comparable<? super K>, E> {
 		nodecount++;
 	}
 
+	private bstNode<K, E> inserthelp(bstNode<K, E> rt, K k, E e) {
+		if (rt == null)
+			return new bstNode<K, E>(k, e);
+		if (rt.key().compareTo(k) > 0)
+			rt.setLeft(inserthelp(rt.left(), k, e));
+		else
+			rt.setRight(inserthelp(rt.right(), k, e));
+		return rt;
+	}
+
 	/**
 	 * Remove a record from the tree.
 	 * 
@@ -33,7 +43,7 @@ public class bst<K extends Comparable<? super K>, E> {
 	 * @return Record removed, or null if there is none.
 	 */
 	public E remove(K k) {
-		E temp = findhelp(root, k); // find it
+		E temp = searchhelp(root, k); // find it
 		if (temp != null) {
 			root = removehelp(root, k); // remove it
 			nodecount--;
@@ -54,56 +64,6 @@ public class bst<K extends Comparable<? super K>, E> {
 			return temp;
 		} else
 			return null;
-	}
-
-	/**
-	 * @return Record with key k, null if none.
-	 * @param k The key value to find.
-	 */
-	public E find(K k) {
-		return findhelp(root, k);
-	}
-
-	/** @return Number of records in dictionary. */
-	public int size() {
-		return nodecount;
-	}
-
-	private E findhelp(bstNode<K, E> rt, K k) {
-		if (rt == null)
-			return null;
-		if (rt.key().compareTo(k) > 0)
-			return findhelp(rt.left(), k);
-		else if (rt.key().compareTo(k) == 0)
-			return rt.element();
-		else
-			return findhelp(rt.right(), k);
-	}
-
-	private bstNode<K, E> inserthelp(bstNode<K, E> rt, K k, E e) {
-		if (rt == null)
-			return new bstNode<K, E>(k, e);
-		if (rt.key().compareTo(k) > 0)
-			rt.setLeft(inserthelp(rt.left(), k, e));
-		else
-			rt.setRight(inserthelp(rt.right(), k, e));
-		return rt;
-	}
-
-	private bstNode<K, E> getmin(bstNode<K, E> rt) {
-		if (rt.left() == null)
-			return rt;
-		else
-			return getmin(rt.left());
-	}
-
-	private bstNode<K, E> deletemin(bstNode<K, E> rt) {
-		if (rt.left() == null)
-			return rt.right();
-		else {
-			rt.setLeft(deletemin(rt.left()));
-			return rt;
-		}
 	}
 
 	/**
@@ -131,5 +91,58 @@ public class bst<K extends Comparable<? super K>, E> {
 			}
 		}
 		return rt;
+	}
+
+	/**
+	 * @return Record with key k, null if none.
+	 * @param k The key value to find.
+	 */
+	public E search(K k) {
+		return searchhelp(root, k);
+	}
+	
+	private E searchhelp(bstNode<K, E> rt, K k) {
+		if (rt == null)
+			return null;
+		if (rt.key().compareTo(k) > 0)
+			return searchhelp(rt.left(), k);
+		else if (rt.key().compareTo(k) == 0)
+			return rt.element();
+		else
+			return searchhelp(rt.right(), k);
+	}
+	
+	public boolean dump() {
+		return dumpHelp(root, 0);
+	}
+	
+	private boolean dumpHelp(bstNode<K, E> rt, int depth) {
+		if (rt == null)
+			return false;
+		dumpHelp(rt.left(), depth + 1);
+		System.out.println("Node has depth " + depth + ", Value " + rt.element().toString());
+		dumpHelp(rt.right(), depth + 1);
+		return true;
+	}
+
+	/** @return Number of records in dictionary. */
+	public int size() {
+		return nodecount;
+	}
+
+	private bstNode<K, E> getmin(bstNode<K, E> rt) {
+		if (rt.left() == null)
+			return rt;
+		else
+			return getmin(rt.left());
+	}
+
+	private bstNode<K, E> deletemin(bstNode<K, E> rt) {
+		if (rt.left() == null)
+			return rt.right();
+		else {
+			rt.setLeft(deletemin(rt.left()));
+			return rt;
+		}
 	}
 }

@@ -4,13 +4,22 @@ public class rectangle {
 	private int y;
 	private int width;
 	private int height;
+	private int xEnd;
+	private int yEnd;
 	
-	rectangle(String nm, int xvar, int yvar, int w, int h){
+	
+	rectangle(String nm, int xVar, int yVar, int w, int h){
 		name = nm;
-		x = xvar;
-		y = yvar;
+		x = xVar;
+		y = yVar;
 		width = w;
 		height = h;
+		xEnd = xVar + w;
+		yEnd = yVar + h;
+	}
+	
+	public String toString() {
+		return "(" + name + ", " + x + ", " + y + ", " + width + ", " + height + ")";
 	}
 	
 	public String getName() {
@@ -23,6 +32,14 @@ public class rectangle {
 	
 	public int getYVal() {
 		return y;
+	}
+
+	public int getXEnd() {
+		return xEnd;
+	}
+	
+	public int getYEnd() {
+		return yEnd;
 	}
 	
 	public int getWidth() {
