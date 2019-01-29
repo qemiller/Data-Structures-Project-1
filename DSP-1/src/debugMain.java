@@ -24,6 +24,8 @@ public class debugMain {
 		
 		best.remove("ala");
 		
+		best.searchAll();
+		
 		best.dump();
 	}
 

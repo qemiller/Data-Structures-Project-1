@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /** BST implementation for Dictionary ADT */
 public class bst<K extends Comparable<? super K>, E> {
 	private bstNode<K, E> root; // Root of BST
@@ -110,6 +112,20 @@ public class bst<K extends Comparable<? super K>, E> {
 			return rt.element();
 		else
 			return searchhelp(rt.right(), k);
+	}
+	
+	public ArrayList<E> searchAll(){
+		ArrayList<E> arrList = new ArrayList<E>();
+		return searchAllHelp(root, arrList);
+	}
+	
+	private ArrayList<E> searchAllHelp(bstNode<K, E> rt, ArrayList<E> al){
+		if (rt == null)
+			return null;
+		al.add(rt.element());
+		searchAllHelp(rt.left(), al);
+		searchAllHelp(rt.right(), al);
+		return al;
 	}
 	
 	public void dump() {
