@@ -11,6 +11,8 @@ public class debugMain {
 		
 		bst<String, rectangle> best = new bst<String, rectangle>();
 		
+		best.dump();
+		
 		best.insert(rect.getName(), rect);
 		best.insert(rect2.getName(), rect2);
 		best.insert(rect3.getName(), rect3);
@@ -19,6 +21,9 @@ public class debugMain {
 		best.insert(rect6.getName(), rect6);
 		
 		best.dump();
+		
+		best.remove("ala");
+		
 		best.dump();
 	}
 

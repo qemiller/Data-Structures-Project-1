@@ -112,8 +112,13 @@ public class bst<K extends Comparable<? super K>, E> {
 			return searchhelp(rt.right(), k);
 	}
 	
-	public boolean dump() {
-		return dumpHelp(root, 0);
+	public void dump() {
+		System.out.println("BST Dump:");
+		if(root == null) {
+			System.out.println("Node has depth 0, Value (null)");
+		}
+		dumpHelp(root, 0);
+		System.out.println("BST size is: " + size());
 	}
 	
 	private boolean dumpHelp(bstNode<K, E> rt, int depth) {
