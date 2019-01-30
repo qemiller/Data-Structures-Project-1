@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /** BST implementation for Dictionary ADT */
 public class bst<K extends Comparable<? super K>, E> {
 	private bstNode<K, E> root; // Root of BST
@@ -102,7 +100,7 @@ public class bst<K extends Comparable<? super K>, E> {
 	public E search(K k) {
 		return searchhelp(root, k);
 	}
-	
+
 	private E searchhelp(bstNode<K, E> rt, K k) {
 		if (rt == null)
 			return null;
@@ -113,30 +111,42 @@ public class bst<K extends Comparable<? super K>, E> {
 		else
 			return searchhelp(rt.right(), k);
 	}
-	
-	public ArrayList<E> searchAll(){
-		ArrayList<E> arrList = new ArrayList<E>();
-		return searchAllHelp(root, arrList);
-	}
-	
-	private ArrayList<E> searchAllHelp(bstNode<K, E> rt, ArrayList<E> al){
-		if (rt == null)
+
+	public bstNode<K, E> getFirst() {
+		if (root == null) {
 			return null;
-		al.add(rt.element());
-		searchAllHelp(rt.left(), al);
-		searchAllHelp(rt.right(), al);
-		return al;
+		}
+		bstNode<K, E> n = root;
+		while (n.left() != null) {
+			n = n.left();
+		}
+		return n;
 	}
-	
+
+	public bstNode<K, E> getNext(bstNode<K, E> n) {
+		if (n.right() != null) {
+			n = n.right();
+			while (n.left() != null) {
+				n = n.left();
+			}
+			return n;
+		} else {
+			while (n.parent() != null && n == n.parent().right()) {
+				n = n.parent();
+			}
+			return n.parent();
+		}
+	}
+
 	public void dump() {
 		System.out.println("BST Dump:");
-		if(root == null) {
+		if (root == null) {
 			System.out.println("Node has depth 0, Value (null)");
 		}
 		dumpHelp(root, 0);
 		System.out.println("BST size is: " + size());
 	}
-	
+
 	private boolean dumpHelp(bstNode<K, E> rt, int depth) {
 		if (rt == null)
 			return false;

@@ -24,7 +24,16 @@ public class debugMain {
 		
 		best.remove("ala");
 		
-		best.searchAll();
+		//This function returns the leftmost node
+		bstNode<String, rectangle> currNode = best.getFirst();
+		//Then we iterate through every value in the tree
+		while(currNode != null) {
+			//	Rectangle values are stored as elements, so grab them, then
+			//	rectangle operations can be performed
+			currNode.element();
+			//Finds next node until null
+			currNode = best.getNext(currNode);
+		}
 		
 		best.dump();
 	}

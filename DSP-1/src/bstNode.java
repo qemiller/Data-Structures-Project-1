@@ -3,13 +3,14 @@ public class bstNode<K, E> {
 	private E element;
 	private bstNode<K, E> left;
 	private bstNode<K, E> right;
+	private bstNode<K, E> parent;
 
 	public bstNode() {
-		left = right = null;
+		left = right = parent = null;
 	}
 
 	public bstNode(K k, E val) {
-		left = right = null;
+		left = right = parent = null;
 		key = k;
 		element = val;
 	}
@@ -17,6 +18,8 @@ public class bstNode<K, E> {
 	public bstNode(K k, E val, bstNode<K, E> l, bstNode<K, E> r) {
 		left = l;
 		right = r;
+		l.parent = this;
+		r.parent = this;
 		key = k;
 		element = val;
 	}
@@ -42,6 +45,7 @@ public class bstNode<K, E> {
 	}
 
 	public bstNode<K, E> setLeft(bstNode<K, E> p) {
+		p.parent = this;
 		return left = p;
 	}
 
@@ -50,7 +54,12 @@ public class bstNode<K, E> {
 	}
 
 	public bstNode<K, E> setRight(bstNode<K, E> p) {
+		p.parent = this;
 		return right = p;
+	}
+	
+	public bstNode<K, E> parent() {
+		return parent;
 	}
 
 	public boolean isLeaf() {
