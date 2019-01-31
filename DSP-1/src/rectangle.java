@@ -22,6 +22,27 @@ public class rectangle {
 		return "(" + name + ", " + x + ", " + y + ", " + width + ", " + height + ")";
 	}
 	
+	//Used for regionsearch
+	public boolean isContained(int xVar, int yVar, int w, int h) {
+		if((x >= xVar && x <= (xVar + w)) || (xEnd <= xVar && xEnd >= (xVar + w))) {
+			//Intersection with x
+			if((y >= yVar && y <= (yVar + h)) || (yEnd <= yVar && yEnd >= (yVar + h))) {
+				//Intersection with y
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+	
+	//Used for remove
+	public boolean isExact(int xVar, int yVar, int w, int h) {
+		if(x != xVar || y != yVar || width != w || height != h) {
+			return false;
+		}
+		else return true;
+	}
+	
 	public String getName() {
 		return name;
 	}
