@@ -39,6 +39,8 @@ public class parse {
 						y = sc.nextInt();
 						w = sc.nextInt();
 						h = sc.nextInt();
+						removeCoordinate(x,y,w,h,tree);
+						System.out.println("rectangle at " + x + ", " + y + ", " + w + ", "+ h + " removed!");
 					}
 					else
 					{
@@ -64,8 +66,7 @@ public class parse {
 					else
 						System.out.println(name + " could not be found.");
 					break;
-					
-					
+	
 				default:
 					System.out.println("Unrecognized input " + command);
 				}
@@ -78,6 +79,18 @@ public class parse {
 	private boolean containsNumber(String s)
 	{
 		return Pattern.compile("[0-9]").matcher(s).find();
+	}
+	
+	private void removeCoordinate(int x, int y, int w, int h, bst<String,rectangle> tree)
+	{
+		bstNode<String, rectangle> curNode = tree.getFirst();
+		while(curNode != null)
+		{
+			if(curNode.element().isExact(x, y, w, h))
+				tree.remove(curNode.element().getName());
+			else
+				curNode=tree.getNext(curNode);
+		}
 	}
 }
 
