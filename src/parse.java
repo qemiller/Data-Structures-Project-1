@@ -30,8 +30,8 @@ public class parse {
 					w = sc.nextInt();
 					h = sc.nextInt();
 					rectangle rectInsert = new rectangle(name, x, y, w, h);//rectangle to be inserted
-					if (Character.isLetter(name.charAt(0))) {
-						if (coordinatesCorrect(x, y, w, h)) {
+					if (Character.isLetter(name.charAt(0))) {//make sure the name starts with a letter
+						if (coordinatesCorrect(x, y, w, h)) {//make sure the coordinates are valid
 							tree.insert(rectInsert.getName(), rectInsert);
 							System.out.println("Rectangle accepted: " + rectInsert.toString());
 						} else
@@ -42,16 +42,16 @@ public class parse {
 
 				case "remove"://deal with the remove command
 					name = sc.next();
-					if (Character.isDigit(name.charAt(0))) { 
+					if (Character.isDigit(name.charAt(0))) { //Check to see if the input arguments are coordinates.
 						x = Integer.parseInt(name);
 						y = sc.nextInt();
 						w = sc.nextInt();
 						h = sc.nextInt();
-						if (removeCoordinate(x, y, w, h, tree)) {
-						} else
+						if (removeCoordinate(x, y, w, h, tree)) {//If a rectangle is removed, do nothing 
+						} else//else, print rejection
 							System.out.println("Rectangle rejected (" + x + "," + y + "," + w + "," + h + ")");
 					} else {
-						if (tree.remove(name) == null)
+						if (tree.remove(name) == null)//If the arguments aren't coordinates, remove by name 
 							System.out.println("Rectangle rejected " + name);
 					}
 					break;
@@ -63,9 +63,13 @@ public class parse {
 				case "search"://deal with the search command
 					name = sc.next();
 					boolean foundOne = false;//Have I found one rectangle with the given name
-					bstNode<String, rectangle> currNode = tree.getFirst();//current node the search is on
-					while (currNode != null) {
+					bstNode<String, rectangle> currNode = tree.getFirst();//this function returns the leftmost node
+					while (currNode != null) {//if the current node in the search isn't the head, keep looking
+						//search through the tree 
 						if (currNode.element().getName() == name) {
+							//b/c the rectangles are stored as elements in the
+							//tree, get it and check if its the right name. If
+							//correct, output the rectangle. If not, keep searching.
 							System.out.println("Rectangle Found:" + currNode.element().toString());
 							currNode = tree.getNext(currNode);
 							foundOne = true;//I have found a rectangle while I was searching
@@ -84,16 +88,40 @@ public class parse {
 					bstNode<String, rectangle> currNodeRegion = tree.getFirst();//current node for regionsearch
 					System.out.println("Rectanagles intersecting region  (" + x + "," + +y + "," + w + "," + h + "):");
 					while (currNodeRegion != null) {
+						//search through the whole tree to see if there are
+						//any rectangles in the region
 						if (currNodeRegion.element().isContained(x, y, w, h)) {
+							//Rectangles are stored as elements so check to see 
+							// if it is contained in the region.
 							System.out.println(currNodeRegion.element().toString() + "\n");
 							currNodeRegion = tree.getNext(currNodeRegion);
 						} else
+							//find next node in the tree
 							currNodeRegion = tree.getNext(currNodeRegion);
 					}
 					break;
 
 				case "intersections"://deal with the intersections command
-					System.out.println("Intersection pairs:");
+					System.out.print("Intersecting Rectangles:\n");
+					bstNode<String, rectangle> storedNode = tree.getFirst();
+					if(storedNode==null)
+						continue;
+					bstNode<String, rectangle> interNode = tree.getNext(storedNode);
+					
+					for(int i = 0; i < tree.size() - 1; i++) {
+						while(interNode != null) {
+							//	Rectangle values are stored as elements, so grab them, then
+							//	rectangle operations can be performed
+							if(interNode.element().intersects(storedNode.element())) {
+								System.out.print(interNode.element().toString() + " : " + 
+									storedNode.element().toString() + '\n');
+							}
+							//Finds next node until null
+							interNode = tree.getNext(interNode);
+						}
+						storedNode = tree.getNext(storedNode);
+						interNode = tree.getNext(storedNode);
+					}
 					break;
 					
 				default:
