@@ -22,16 +22,37 @@ public class rectangle {
 		return "(" + name + ", " + x + ", " + y + ", " + width + ", " + height + ")";
 	}
 	
-	public String rectString() {
-		return "(" + name + ", " + x + ", " + y + ", " + width + ", " + height + ")";
-	}
-	
 	//Used for regionsearch
 	public boolean isContained(int xVar, int yVar, int w, int h) {
+		//Checks to see if x is within bounds
 		if((x >= xVar && x <= (xVar + w)) || (xEnd <= xVar && xEnd >= (xVar + w))) {
-			//Intersection with x
+			//Checks to see if y is within bounds
 			if((y >= yVar && y <= (yVar + h)) || (yEnd <= yVar && yEnd >= (yVar + h))) {
-				//Intersection with y
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+	
+	//Used for intersections
+	public boolean intersects(rectangle r) {
+		//Checks to see if x boundaries are crossed
+		if((x >= r.getXVal() && x < r.getXEnd() && xEnd > r.getXEnd()) || 
+				(x < r.getXVal() && xEnd > r.getXVal() && xEnd <= r.getXEnd())) {
+			//Checks to see if it is within y boundaries
+			if((y >= r.getYVal() && y <= r.getYEnd() && yEnd >= r.getYEnd()) ||
+					(y <= r.getYVal() && yEnd >= r.getYVal() && yEnd <= r.getYEnd())) {
+				return true;
+			}
+			else return false;
+		}
+		//Checks to see if y boundaries are crossed
+		else if((y >= r.getYVal() && y < r.getYEnd() && yEnd > r.getYEnd()) ||
+				(y < r.getYVal() && yEnd > r.getYVal() && yEnd <= r.getYEnd())) {
+			//Checks to see if it is within x boundaries
+			if((x >= r.getXVal() && x <= r.getXEnd() && xEnd >= r.getXEnd()) || 
+					(x <= r.getXVal() && xEnd >= r.getXVal() && xEnd <= r.getXEnd())) {
 				return true;
 			}
 			else return false;
