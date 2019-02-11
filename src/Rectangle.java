@@ -1,4 +1,4 @@
-public class rectangle {
+public class Rectangle {
 	private String name;
 	private int x;
 	private int y;
@@ -8,7 +8,7 @@ public class rectangle {
 	private int yEnd;
 	
 	
-	rectangle(String nm, int xVar, int yVar, int w, int h){
+	Rectangle(String nm, int xVar, int yVar, int w, int h){
 		name = nm;
 		x = xVar;
 		y = yVar;
@@ -45,7 +45,7 @@ public class rectangle {
 	}
 	
 	//Used for intersections
-	public boolean intersects(rectangle r) {
+	public boolean intersects(Rectangle r) {
 		//Checks to see if x boundaries are crossed
 		if ((x >= r.getXVal() && x < r.getXEnd() && xEnd > r.getXEnd()) || 
 				(x < r.getXVal() && xEnd > r.getXVal()

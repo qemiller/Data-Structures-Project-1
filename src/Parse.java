@@ -14,15 +14,15 @@ public void parseFile(String fileName)
 		try 
 		{
 			Scanner sc = new Scanner(new File(fileName));
-			bst<String, rectangle> tree = new bst<String, rectangle>();
+			bst<String, Rectangle> tree = new bst<String, Rectangle>();
 			while (sc.hasNextLine())
 			{
 				String command = sc.next(); //command read in from file
-				String name; //name of rectangle
-				int x; //x-coordinate of rectangle
-				int y; //y-coordinate of rectangle
-				int w; //width of rectangle
-				int h; //height of rectangle
+				String name; //name of Rectangle
+				int x; //x-coordinate of Rectangle
+				int y; //y-coordinate of Rectangle
+				int w; //width of Rectangle
+				int h; //height of Rectangle
 				switch (command)
 				{
 					case "insert"://deal with the insert command
@@ -31,7 +31,7 @@ public void parseFile(String fileName)
 						y = sc.nextInt();
 						w = sc.nextInt();
 						h = sc.nextInt();
-						rectangle rectInsert = new rectangle(name, x, y, w, h); //rectangle to be inserted
+						Rectangle rectInsert = new Rectangle(name, x, y, w, h); //Rectangle to be inserted
 						if (Character.isLetter(name.charAt(0))) 
 						{ //make sure the name starts with a letter
 							if (coordinatesCorrect(x, y, w, h)) 
@@ -60,7 +60,7 @@ public void parseFile(String fileName)
 							h = sc.nextInt();
 							if (removeCoordinate(x, y, w, h, tree))
 							{ 
-								//If a rectangle is removed, do nothing 
+								//If a Rectangle is removed, do nothing 
 							}
 							else //else, print rejection
 							{
@@ -83,26 +83,26 @@ public void parseFile(String fileName)
 	
 					case "search": //deal with the search command
 						name = sc.next();
-						boolean foundOne = false; //Have I found one rectangle with the given name
-						bstNode<String, rectangle> currNode = tree.getFirst(); //this function returns the leftmost node
+						boolean foundOne = false; //Have I found one Rectangle with the given name
+						bstNode<String, Rectangle> currNode = tree.getFirst(); //this function returns the leftmost node
 						while (currNode != null)
 						{ //if the current node in the search isn't the head, keep looking
 							//search through the tree 
 							if (currNode.element().getName() == name)
 							{
-								//b/c the rectangles are stored as elements in the
+								//b/c the Rectangles are stored as elements in the
 								//tree, get it and check if its the right name. If
-								//correct, output the rectangle. If not, keep searching.
+								//correct, output the Rectangle. If not, keep searching.
 								System.out.println("Rectangle Found:" + currNode.element().toString());
 								currNode = tree.getNext(currNode);
-								foundOne = true; //I have found a rectangle while I was searching
+								foundOne = true; //I have found a Rectangle while I was searching
 							} 
 							else
 							{
 								currNode = tree.getNext(currNode);
 							}
 						}
-						if (!foundOne) //If I haven't found a rectangle while I was searching, throw an error
+						if (!foundOne) //If I haven't found a Rectangle while I was searching, throw an error
 						{
 							System.out.println("Rectangle not found:" + name);
 						}
@@ -113,14 +113,14 @@ public void parseFile(String fileName)
 						y = sc.nextInt();
 						w = sc.nextInt();
 						h = sc.nextInt();
-						bstNode<String, rectangle> currNodeRegion = 
+						bstNode<String, Rectangle> currNodeRegion = 
 								tree.getFirst(); //current node for regionsearch
 						System.out.println("Rectanagles intersecting region  "
 								+ "(" + x + "," + +y + "," + w + "," + h + "):");
 						while (currNodeRegion != null)
 						{
 							//search through the whole tree to see if there are
-							//any rectangles in the region
+							//any Rectangles in the region
 							if (currNodeRegion.element().isContained(x, y, w, h)) 
 							{
 								//Rectangles are stored as elements so check to see 
@@ -137,15 +137,15 @@ public void parseFile(String fileName)
 	
 					case "intersections": //deal with the intersections command
 						System.out.print("Intersecting Rectangles:\n");
-						bstNode<String, rectangle> storedNode = tree.getFirst();
+						bstNode<String, Rectangle> storedNode = tree.getFirst();
 						if(storedNode==null)
 							continue;
-						bstNode<String, rectangle> interNode = tree.getNext(storedNode);
+						bstNode<String, Rectangle> interNode = tree.getNext(storedNode);
 						for (int i = 0; i < tree.size() - 1; i++) {
 							while (interNode != null)
 							{
 								//	Rectangle values are stored as elements, so grab them, then
-								//	rectangle operations can be performed
+								//	Rectangle operations can be performed
 								if (interNode.element().intersects(storedNode.element()))
 								{
 									System.out.print(interNode.element().toString() + " : " + 
@@ -172,24 +172,24 @@ public void parseFile(String fileName)
 	}
 
 	/*
-	 * will remove a rectangle by coordinate from the tree
+	 * will remove a Rectangle by coordinate from the tree
 	 * 
-	 * @param x is x coordinate of rectangle
+	 * @param x is x coordinate of Rectangle
 	 * 
-	 * @param y is y coordinate of rectangle
+	 * @param y is y coordinate of Rectangle
 	 * 
-	 * @param w is width of rectangle
+	 * @param w is width of Rectangle
 	 * 
-	 * @param h is height of rectangle
+	 * @param h is height of Rectangle
 	 * 
-	 * @param is the tree to search for the given rectangle
+	 * @param is the tree to search for the given Rectangle
 	 * 
 	 * @return if there was something removed from the tree
 	 */
-	private boolean removeCoordinate(int x, int y, int w, int h, bst<String, rectangle> tree)
+	private boolean removeCoordinate(int x, int y, int w, int h, bst<String, Rectangle> tree)
 	{
 		boolean removedOne = false;
-		bstNode<String, rectangle> curNode = tree.getFirst();
+		bstNode<String, Rectangle> curNode = tree.getFirst();
 		while (curNode != null)
 		{
 			if (curNode.element().isExact(x, y, w, h))
@@ -217,13 +217,13 @@ public void parseFile(String fileName)
 	 * Checks to make sure the given coordinates are within the world box and width
 	 * and height are greater than zero.
 	 * 
-	 * @param x is x coordinate of rectangle
+	 * @param x is x coordinate of Rectangle
 	 * 
-	 * @param y is y coordinate of rectangle
+	 * @param y is y coordinate of Rectangle
 	 * 
-	 * @param w is width of rectangle
+	 * @param w is width of Rectangle
 	 * 
-	 * @param h is height of rectangle
+	 * @param h is height of Rectangle
 	 * 
 	 * @return if the coordinates are correct
 	 */
