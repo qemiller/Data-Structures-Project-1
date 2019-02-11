@@ -8,7 +8,7 @@ import java.util.Scanner;
  This function parses the file and executes the given commands
  @param fileName is name of file to be parsed
  */
-public class parse {
+public class Parse {
 public void parseFile(String fileName)
 {
 		try 

@@ -34,12 +34,13 @@
 //  anything during the discussion or modifies any computer file
 //  during the discussion. I have violated neither the spirit nor
 //  letter of this restriction.
+
 public class Rectangle1
 {	
 public static void main(String[] args)
 	{
 		String fileName = args[0];
-		parse Rectangle1 = new parse();
+		Parse Rectangle1 = new Parse();
 		Rectangle1.parseFile(fileName);
 	}
 
