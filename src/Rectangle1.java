@@ -36,12 +36,12 @@
 //  letter of this restriction.
 
 public class Rectangle1
-{	
-public static void main(String[] args)
-	{
-		String fileName = args[0];
-		Parse Rectangle1 = new Parse();
-		Rectangle1.parseFile(fileName);
-	}
+{
+    public static void main(String[] args)
+    {
+        String fileName = args[0];
+        Parse Rectangle1 = new Parse();
+        Rectangle1.parseFile(fileName);
+    }
 
 }
