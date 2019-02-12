@@ -66,22 +66,7 @@ public class Rectangle
                 return false;
             }
         }
-        // Checks to see if y boundaries are crossed
-        else if ((y >= r.getYVal() && y < r.getYEnd() && yEnd > r.getYEnd())
-                || (y < r.getYVal() && yEnd > r.getYVal()
-                        && yEnd <= r.getYEnd()))
-        {
-            // Checks to see if it is within x boundaries
-            if ((x >= r.getXVal() && x <= r.getXEnd() && xEnd >= r.getXEnd())
-                    || (x <= r.getXVal() && xEnd >= r.getXVal()
-                            && xEnd <= r.getXEnd()))
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
-        } else
+      else
         {
             return false;
         }

@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /*Compiler: jdk 1.8.0_201
  *Operating System: Windows 10
  *Date Completed:
@@ -41,7 +45,17 @@ public class Rectangle1
     {
         String fileName = args[0];
         Parse Rectangle1 = new Parse();
-        Rectangle1.parseFile(fileName);
+        Scanner sc;
+        try
+        {
+            sc = new Scanner(new File(fileName));
+            Rectangle1.parse(sc);
+
+        } catch (FileNotFoundException e)
+        {
+            System.out.println("File " + fileName + " could not be found!");
+        }
+
     }
 
 }
