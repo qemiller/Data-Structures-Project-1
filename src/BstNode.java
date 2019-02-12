@@ -1,8 +1,9 @@
 /**
  * @author Josh
+ * @version 1.6
  *
- * @param <K>
- * @param <E>
+ * @param <K> Key value of the element.
+ * @param <E> Element value of the element.
  */
 public class BstNode<K, E>
 {
@@ -19,8 +20,8 @@ public class BstNode<K, E>
     }
     
     /**
-     * @param k 
-     * @param val
+     * @param k Key value of the element
+     * @param val Element value of the element
      */
     public BstNode(K k, E val)
     {
@@ -29,65 +30,82 @@ public class BstNode<K, E>
         element = val;
     }
 
-    public BstNode(K k, E val, BstNode<K, E> l, BstNode<K, E> r)
-    {
-        left = l;
-        right = r;
-        l.parent = this;
-        r.parent = this;
-        key = k;
-        element = val;
-    }
-
+    /**
+     * @return Key value
+     */
     public K key()
     {
         return key;
     }
 
+    /**
+     * @param k New key value
+     * @return New key value
+     */
     public K setKey(K k)
     {
         return key = k;
     }
 
+    /**
+     * @return Element value
+     */
     public E element()
     {
         return element;
     }
 
+    /**
+     * @param v New element value
+     * @return New element value
+     */
     public E setElement(E v)
     {
         return element = v;
     }
 
+    /**
+     * @return Left node
+     */
     public BstNode<K, E> left()
     {
         return left;
     }
 
+    /**
+     * @param p Parent node
+     * @return Parent node's new left node
+     */
     public BstNode<K, E> setLeft(BstNode<K, E> p)
     {
         p.parent = this;
         return left = p;
     }
 
+    /**
+     * @return Right node
+     */
     public BstNode<K, E> right()
     {
         return right;
     }
 
+    /**
+     * @param p Parent node
+     * @return Parent node's new right node
+     */
     public BstNode<K, E> setRight(BstNode<K, E> p)
     {
         p.parent = this;
         return right = p;
     }
 
+    /**
+     * @return Parent node
+     */
     public BstNode<K, E> parent()
     {
         return parent;
     }
 
-    public boolean isLeaf()
-    {
-        return (left == null) && (right == null);
-    }
 }
