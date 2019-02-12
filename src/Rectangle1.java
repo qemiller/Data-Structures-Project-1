@@ -38,22 +38,34 @@ import java.util.Scanner;
 //  anything during the discussion or modifies any computer file
 //  during the discussion. I have violated neither the spirit nor
 //  letter of this restriction.
-
+/**
+ * 
+ * @author Quinton Miller 
+ * @class Rectangle1 takes in and runs commands from a txt file to put and get rectangles from a dictionary
+ * @method main the main program for Rectangle1
+ *
+ */
 public class Rectangle1
 {
+    /**
+     * @author Quinton Miller
+     * @param args the txt file to read from.
+     */
     public static void main(String[] args)
     {
         String fileName = args[0];
-        Parse Rectangle1 = new Parse();
+        Parse rectangle1 = new Parse();
         Scanner sc;
         try
         {
             sc = new Scanner(new File(fileName));
-            Rectangle1.parse(sc);
+            rectangle1.parse(sc);
+            sc.close();
 
-        } catch (FileNotFoundException e)
+        } 
+        catch (FileNotFoundException e)
         {
-            System.out.println("File " + fileName + " could not be found!");
+            //if the file isn't found, do nothing
         }
 
     }

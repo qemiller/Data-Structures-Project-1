@@ -11,62 +11,52 @@ public class Parse
 {
     public void parse(Scanner sc)
     {
-        try
+        Bst<String, Rectangle> tree = new Bst<String, Rectangle>();
+        while (sc.hasNextLine())
         {
-            Bst<String, Rectangle> tree = new Bst<String, Rectangle>();
-            while (sc.hasNextLine())
+            String command = sc.next(); // command read in from file
+            switch (command)
             {
-                String command = sc.next(); // command read in from file
-                String name; // name of Rectangle
-                int x; // x-coordinate of Rectangle
-                int y; // y-coordinate of Rectangle
-                int w; // width of Rectangle
-                int h; // height of Rectangle
-                switch (command)
-                {
-                    case "insert":// deal with the insert command
-                        name = sc.next();
-                        x = sc.nextInt();
-                        y = sc.nextInt();
-                        w = sc.nextInt();
-                        h = sc.nextInt();
-                        handleInsert(name, x, y, w, h, tree);
-                        break;
+                case "insert":// deal with the insert command
+                    String nameInsert = sc.next();
+                    int xInsert = sc.nextInt();
+                    int yInsert = sc.nextInt();
+                    int wInsert = sc.nextInt();
+                    int hInsert = sc.nextInt();
+                    handleInsert(nameInsert, xInsert, yInsert, wInsert, hInsert,
+                            tree);
+                    break;
 
-                    case "remove": // deal with the remove command
-                        name = sc.next();
-                        handleRemove(name, sc, tree);
-                        break;
+                case "remove": // deal with the remove command
+                    String nameRemove = sc.next();
+                    handleRemove(nameRemove, sc, tree);
+                    break;
 
-                    case "dump": // deal with the dump command
-                        tree.dump();
-                        break;
+                case "dump": // deal with the dump command
+                    tree.dump();
+                    break;
 
-                    case "search": // deal with the search command
-                        name = sc.next();
-                        handleSearch(name, sc, tree);
-                        break;
+                case "search": // deal with the search command
+                    String nameSearch = sc.next();
+                    handleSearch(nameSearch, sc, tree);
+                    break;
 
-                    case "regionsearch": // deal with the regionsearch command
-                        x = sc.nextInt();
-                        y = sc.nextInt();
-                        w = sc.nextInt();
-                        h = sc.nextInt();
-                        handleRegionSearch(x, y, w, h, tree);
-                        break;
+                case "regionsearch": // deal with the regionsearch command
+                    int xRegion = sc.nextInt();
+                    int yRegion = sc.nextInt();
+                    int wRegion = sc.nextInt();
+                    int hRegion = sc.nextInt();
+                    handleRegionSearch(xRegion, yRegion, wRegion, hRegion,
+                            tree);
+                    break;
 
-                    case "intersections": // deal with the intersections command
-                        handleIntersections(tree);
-                        break;
+                case "intersections": // deal with the intersections command
+                    handleIntersections(tree);
+                    break;
 
-                    default:
-                        System.out.println("Unrecognized input " + command);
-                }
+                default:
+                    System.out.println("Unrecognized input " + command);
             }
-            sc.close();
-        } catch (Exception FileNotFoundException)
-        {
-            // Throw this if I can't find the file
         }
     }
 
@@ -240,7 +230,7 @@ public class Parse
         return true;
     }
 
-    public void handleRegionSearch(int x, int y, int w, int h,
+    public boolean handleRegionSearch(int x, int y, int w, int h,
             Bst<String, Rectangle> tree)
     {
         BstNode<String, Rectangle> currNodeRegion = tree.getFirst(); // current
@@ -264,14 +254,15 @@ public class Parse
                 currNodeRegion = tree.getNext(currNodeRegion);
             }
         }
+        return true;
     }
 
-    public void handleIntersections(Bst<String, Rectangle> tree)
+    public boolean handleIntersections(Bst<String, Rectangle> tree)
     {
         System.out.print("Intersecting Rectangles:\n");
         BstNode<String, Rectangle> storedNode = tree.getFirst();
         if (storedNode == null)
-            return;
+            return false;
         BstNode<String, Rectangle> interNode = tree.getNext(storedNode);
         for (int i = 0; i < tree.size() - 1; i++)
         {
@@ -291,6 +282,6 @@ public class Parse
             storedNode = tree.getNext(storedNode);
             interNode = tree.getNext(storedNode);
         }
+        return true;
     }
-
 }
