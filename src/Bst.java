@@ -1,4 +1,11 @@
 /** BST implementation for Dictionary ADT */
+/**
+ * @author Josh
+ * @version 1.6
+ *
+ * @param <K> Key value of the tree.
+ * @param <E> Element value of the tree.
+ */
 public class Bst<K extends Comparable<? super K>, E>
 {
     private BstNode<K, E> root; // Root of BST
@@ -30,6 +37,12 @@ public class Bst<K extends Comparable<? super K>, E>
         nodecount++;
     }
 
+    /**
+     * @param rt Current node in insert.
+     * @param k Key value of the record.
+     * @param e The record to insert.
+     * @return Returns node inserted
+     */
     private BstNode<K, E> inserthelp(BstNode<K, E> rt, K k, E e)
     {
         if (rt == null)
@@ -145,6 +158,9 @@ public class Bst<K extends Comparable<? super K>, E>
         }
     }
 
+    /**
+     * @return Leftmost node in the tree.
+     */
     public BstNode<K, E> getFirst()
     {
         if (root == null)
@@ -159,6 +175,10 @@ public class Bst<K extends Comparable<? super K>, E>
         return n;
     }
 
+    /**
+     * @param n Previous node in iteration
+     * @return Current node in iteration.
+     */
     public BstNode<K, E> getNext(BstNode<K, E> n)
     {
         if (n.right() != null)
@@ -179,6 +199,7 @@ public class Bst<K extends Comparable<? super K>, E>
         }
     }
 
+    // Dumps all the values from the BST as string representations
     public void dump()
     {
         System.out.println("BST Dump:");
@@ -190,6 +211,11 @@ public class Bst<K extends Comparable<? super K>, E>
         System.out.println("BST size is: " + size());
     }
 
+    /**
+     * @param rt Current node in recursion.
+     * @param depth Keeps track of tree depth in recursion
+     * @return False if starter node is null, otherwise returns true
+     */
     private boolean dumpHelp(BstNode<K, E> rt, int depth)
     {
         if (rt == null)
@@ -209,6 +235,10 @@ public class Bst<K extends Comparable<? super K>, E>
         return nodecount;
     }
 
+    /**
+     * @param rt Starter node
+     * @return Minimum value from starting node
+     */
     private BstNode<K, E> getmin(BstNode<K, E> rt)
     {
         if (rt.left() == null)
@@ -220,6 +250,10 @@ public class Bst<K extends Comparable<? super K>, E>
         }
     }
 
+    /**
+     * @param rt Starter node
+     * @return Minimum value from starting node
+     */
     private BstNode<K, E> deletemin(BstNode<K, E> rt)
     {
         if (rt.left() == null)

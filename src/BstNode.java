@@ -1,3 +1,9 @@
+/**
+ * @author Josh
+ *
+ * @param <K>
+ * @param <E>
+ */
 public class BstNode<K, E>
 {
     private K key;
@@ -6,11 +12,16 @@ public class BstNode<K, E>
     private BstNode<K, E> right;
     private BstNode<K, E> parent;
 
+    // Default Constructor
     public BstNode()
     {
         left = right = parent = null;
     }
-
+    
+    /**
+     * @param k 
+     * @param val
+     */
     public BstNode(K k, E val)
     {
         left = right = parent = null;
