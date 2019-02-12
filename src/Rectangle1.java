@@ -39,12 +39,14 @@ import java.util.Scanner;
 //  during the discussion. I have violated neither the spirit nor
 //  letter of this restriction.
 /**
+ * Rectangle1 takes in and runs commands from a txt file to put and get
+ * rectangles from a dictionary. main the main program for Rectangle1
  * 
- * @author Quinton Miller 
- * @class Rectangle1 takes in and runs commands from a txt file to put and get rectangles from a dictionary
- * @method main the main program for Rectangle1
- *
+ * @author Quinton Miller qemiller
+ * @author Josh Rehm jrehm135
+ * @version 2-12-2019
  */
+
 public class Rectangle1
 {
     /**
@@ -65,7 +67,7 @@ public class Rectangle1
         } 
         catch (FileNotFoundException e)
         {
-            //if the file isn't found, do nothing
+            // if the file isn't found, do nothing
         }
 
     }
