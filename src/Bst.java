@@ -18,13 +18,6 @@ public class Bst<K extends Comparable<? super K>, E>
         nodecount = 0;
     }
 
-    /** Reinitialize tree */
-    public void clear()
-    {
-        root = null;
-        nodecount = 0;
-    }
-
     /**
      * Insert a record into the tree.
      * 
@@ -52,7 +45,8 @@ public class Bst<K extends Comparable<? super K>, E>
         if (rt.key().compareTo(k) > 0)
         {
             rt.setLeft(inserthelp(rt.left(), k, e));
-        } else
+        } 
+        else
         {
             rt.setRight(inserthelp(rt.right(), k, e));
         }
@@ -89,7 +83,8 @@ public class Bst<K extends Comparable<? super K>, E>
             root = removehelp(root, root.key());
             nodecount--;
             return temp;
-        } else
+        } 
+        else
         {
             return null;
         }
@@ -109,18 +104,22 @@ public class Bst<K extends Comparable<? super K>, E>
         if (rt.key().compareTo(k) > 0)
         {
             rt.setLeft(removehelp(rt.left(), k));
-        } else if (rt.key().compareTo(k) < 0)
+        } 
+        else if (rt.key().compareTo(k) < 0)
         {
             rt.setRight(removehelp(rt.right(), k));
-        } else
+        } 
+        else
         { // Found it, remove it
             if (rt.left() == null)
             {
                 return rt.right();
-            } else if (rt.right() == null)
+            } 
+            else if (rt.right() == null)
             {
                 return rt.left();
-            } else
+            } 
+            else
             { // Two children
                 BstNode<K, E> temp = getmin(rt.right());
                 rt.setElement(temp.element());
@@ -149,10 +148,12 @@ public class Bst<K extends Comparable<? super K>, E>
         if (rt.key().compareTo(k) > 0)
         {
             return searchhelp(rt.left(), k);
-        } else if (rt.key().compareTo(k) == 0)
+        } 
+        else if (rt.key().compareTo(k) == 0)
         {
             return rt.element();
-        } else
+        } 
+        else
         {
             return searchhelp(rt.right(), k);
         }
@@ -189,7 +190,8 @@ public class Bst<K extends Comparable<? super K>, E>
                 n = n.left();
             }
             return n;
-        } else
+        } 
+        else
         {
             while (n.parent() != null && n == n.parent().right())
             {
@@ -244,7 +246,8 @@ public class Bst<K extends Comparable<? super K>, E>
         if (rt.left() == null)
         {
             return rt;
-        } else
+        } 
+        else
         {
             return getmin(rt.left());
         }
@@ -259,7 +262,8 @@ public class Bst<K extends Comparable<? super K>, E>
         if (rt.left() == null)
         {
             return rt.right();
-        } else
+        } 
+        else
         {
             rt.setLeft(deletemin(rt.left()));
             return rt;
