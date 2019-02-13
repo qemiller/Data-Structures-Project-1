@@ -1,6 +1,6 @@
 /** BST implementation for Dictionary ADT */
 /**
- * @author Josh
+ * @author Josh Rehm
  * @version 1.6
  *
  * @param <K> Key value of the tree.
@@ -9,7 +9,7 @@
 public class Bst<K extends Comparable<? super K>, E>
 {
     private BstNode<K, E> root; // Root of BST
-    int nodecount; // Size of BST
+    private int nodecount; // Size of BST
 
     /** Constructor */
     Bst()
@@ -139,6 +139,9 @@ public class Bst<K extends Comparable<? super K>, E>
         return searchhelp(root, k);
     }
 
+    /**
+     * Helper function to facilitate search function
+     */
     private E searchhelp(BstNode<K, E> rt, K k)
     {
         if (rt == null)
@@ -201,7 +204,9 @@ public class Bst<K extends Comparable<? super K>, E>
         }
     }
 
-    // Dumps all the values from the BST as string representations
+    /**
+     * dumps the bst to standard out.
+     */
     public void dump()
     {
         System.out.println("BST Dump:");

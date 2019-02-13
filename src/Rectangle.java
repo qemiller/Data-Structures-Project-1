@@ -93,7 +93,8 @@ public class Rectangle
                         && xEnd <= r.getXEnd()))
         {
             // Checks to see if it is within y boundaries
-            return ((y >= r.getYVal() && y <= r.getYEnd() && yEnd >= r.getYEnd())
+            return ((y >= r.getYVal() && y <= r.getYEnd()
+                    && yEnd >= r.getYEnd())
                     || (y <= r.getYVal() && yEnd >= r.getYVal()
                             && yEnd <= r.getYEnd()));
         }
@@ -116,7 +117,7 @@ public class Rectangle
     // Used for remove
     public boolean isExact(int xVar, int yVar, int w, int h)
     {
-        return (x != xVar || y != yVar || width != w || height != h);
+        return (!(x != xVar || y != yVar || width != w || height != h));
     }
 
     /**
