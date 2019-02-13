@@ -1,10 +1,11 @@
 /**
- * @author Josh jrehm135
+
+ * @author Josh Rehm jrehm135
  * @author Quinton Miller qemiller
+ * @version 1.6
  *
- * @param <K>
- * @param <E>
- * @version 2-12-2019
+ * @param <K> Key value of the element.
+ * @param <E> Element value of the element.
  */
 public class BstNode<K, E>
 {
@@ -25,9 +26,14 @@ public class BstNode<K, E>
     }
     
     /**
+<<<<<<< HEAD
      * make a new Node with key k and value val
      * @param k key
      * @param val value at node
+=======
+     * @param k Key value of the element
+     * @param val Element value of the element
+>>>>>>> 9068b5f2f18d870bbcad43d9c026a637b0ef47ea
      */
     public BstNode(K k, E val)
     {
@@ -57,7 +63,7 @@ public class BstNode<K, E>
 
     /**
      * key getter
-     * @return key value
+     * @return Key value
      */
     public K key()
     {
@@ -66,8 +72,8 @@ public class BstNode<K, E>
 
     /**
      * set key value
-     * @param k what to set node key to
-     * @return K value
+     * @param k New key value
+     * @return New key value
      */
     public K setKey(K k)
     {
@@ -78,16 +84,18 @@ public class BstNode<K, E>
     /**
      * get element
      * @return element at node
+     * @return Element value
      */
     public E element()
     {
         return element;
     }
     
+  
     /**
-     * set element at a node
-     * @param v new element value
-     * @return v value
+     * set element of node
+     * @param v New element value
+     * @return New element value
      */
     public E setElement(E v)
     {
@@ -97,7 +105,7 @@ public class BstNode<K, E>
 
     /**
      * get left child of current node
-     * @return left child
+     * @return Left node
      */
     public BstNode<K, E> left()
     {
@@ -106,8 +114,8 @@ public class BstNode<K, E>
 
     /**
      * set left child of current node
-     * @param p node to set as left
-     * @return current left node
+     * @param p Parent node
+     * @return Parent node's new left node
      */
     public BstNode<K, E> setLeft(BstNode<K, E> p)
     {
@@ -118,7 +126,7 @@ public class BstNode<K, E>
 
     /**
      * get right child of current node
-     * @return right child of node
+     * @return Right node
      */
     public BstNode<K, E> right()
     {
@@ -127,8 +135,8 @@ public class BstNode<K, E>
 
     /**
      * set the right child of current node
-     * @param p node to set as right child
-     * @return was the setting successful
+     * @param p Parent node
+     * @return Parent node's new right node
      */
     public BstNode<K, E> setRight(BstNode<K, E> p)
     {
@@ -136,14 +144,16 @@ public class BstNode<K, E>
         right = p;
         return right;
     }
+
     /**
      * return parent of left node. 
-     * @return parent of left node
+     *@return Parent node
      */
     public BstNode<K, E> parent()
     {
         return parent;
     }
+
     
     /**
      * Check if the current node is a leaf
