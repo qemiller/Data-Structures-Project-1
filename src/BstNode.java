@@ -26,14 +26,9 @@ public class BstNode<K, E>
     }
     
     /**
-<<<<<<< HEAD
      * make a new Node with key k and value val
-     * @param k key
-     * @param val value at node
-=======
      * @param k Key value of the element
      * @param val Element value of the element
->>>>>>> 9068b5f2f18d870bbcad43d9c026a637b0ef47ea
      */
     public BstNode(K k, E val)
     {
@@ -83,7 +78,6 @@ public class BstNode<K, E>
 
     /**
      * get element
-     * @return element at node
      * @return Element value
      */
     public E element()

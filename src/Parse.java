@@ -149,7 +149,7 @@ public class Parse
             Rectangle rectInsert = new Rectangle(name, x, y, w, h);
             System.out.println("Rectangle rejected: " + rectInsert.toString());
             return false;
-        }
+        }   
         return true;
     }
 
@@ -261,7 +261,7 @@ public class Parse
                                                                      // node for
                                                                  // regionsearch
         System.out.println("Rectanagles intersecting region  " + "(" + x + ","
-                + +y + "," + w + "," + h + "):");
+                + y + "," + w + "," + h + "): ");
         while (currNodeRegion != null)
         {
             // search through the whole tree to see if there are
@@ -271,7 +271,7 @@ public class Parse
                 // Rectangles are stored as elements so check to
                 // see
                 // if it is contained in the region.
-                System.out.println(currNodeRegion.element().toString() + "\n");
+                System.out.println(currNodeRegion.element().toString());
                 currNodeRegion = tree.getNext(currNodeRegion);
             }
             else // find next node in the tree
@@ -307,8 +307,8 @@ public class Parse
                 // Rectangle operations can be performed
                 if (interNode.element().intersects(storedNode.element()))
                 {
-                    System.out.print(interNode.element().toString() + " : "
-                            + storedNode.element().toString() + '\n');
+                    System.out.println(interNode.element().toString() + " : "
+                            + storedNode.element().toString());
                 }
                 // Finds next node until null
                 interNode = tree.getNext(interNode);
