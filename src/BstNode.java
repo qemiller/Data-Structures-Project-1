@@ -97,7 +97,7 @@ public class BstNode<K, E>
     public BstNode<K, E> setLeft(BstNode<K, E> p)
     {
         if (p != null) {
-        	p.parent = this;
+            p.parent = this;
         }
         left = p;
         return left;
@@ -120,7 +120,7 @@ public class BstNode<K, E>
     public BstNode<K, E> setRight(BstNode<K, E> p)
     {
         if (p != null) {
-        	p.parent = this;
+            p.parent = this;
         }
         right = p;
         return right;

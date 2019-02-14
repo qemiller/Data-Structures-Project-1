@@ -101,7 +101,7 @@ public class Bst<K extends Comparable<? super K>, E>
         {
             return null;
         }
-    	if (rt.key().compareTo(k) > 0)
+        if (rt.key().compareTo(k) > 0)
         {
             rt.setLeft(removehelp(rt.left(), k));
         } 
