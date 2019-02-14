@@ -113,9 +113,10 @@ public class BstNode<K, E>
      */
     public BstNode<K, E> setLeft(BstNode<K, E> p)
     {
-        p.parent = this;
-        left = p;
-        return left;
+    	if(p != null) {
+        	p.parent = this;
+        }
+        return left = p;
     }
 
     /**
@@ -134,9 +135,10 @@ public class BstNode<K, E>
      */
     public BstNode<K, E> setRight(BstNode<K, E> p)
     {
-        p.parent = this;
-        right = p;
-        return right;
+        if(p != null) {
+        	p.parent = this;
+        }
+        return right = p;
     }
 
     /**
@@ -146,15 +148,5 @@ public class BstNode<K, E>
     public BstNode<K, E> parent()
     {
         return parent;
-    }
-
-    
-    /**
-     * Check if the current node is a leaf
-     * @return is node a leaf   
-     */
-    public boolean isLeaf()
-    {
-        return (left == null) && (right == null);
     }
 }
