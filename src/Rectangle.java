@@ -91,8 +91,9 @@ public class Rectangle
         int leftX = Math.max(x, r.getXVal());
         int rightX = Math.min(xEnd, r.getXEnd());
         // Rectangles don't intersect
-        if (rightX <= leftX)
+        if (rightX <= leftX) {
             return false;
+        }
         else {
             int topY = Math.max(y, r.getYVal());
             int bottomY = Math.min(yEnd, r.getYEnd());
@@ -105,13 +106,8 @@ public class Rectangle
                     && topY == y && bottomY == yEnd) {
                 return false;
             }
-            else if (leftX == r.getXVal() && rightX == r.getXEnd()
-                    && topY == r.getYVal() && bottomY == r.getYEnd()) {
-                return false;
-            }
-            else {
-                return true;
-            }
+            return !(leftX == r.getXVal() && rightX == r.getXEnd()
+                    && topY == r.getYVal() && bottomY == r.getYEnd());
         }
     }
 

@@ -130,7 +130,7 @@ public class BstTest extends TestCase {
      * Test for proper dump output
      */
     public void testDump() {
-         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
+        Bst<String, Rectangle> best = new Bst<String, Rectangle>();
          
         // Test empty dump
         assertEquals(best.size(), 0);
@@ -152,7 +152,7 @@ public class BstTest extends TestCase {
      */
     public void testIterTools() {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
-    	
+        
         best.insert(RECT1.getName(), RECT1);
         best.insert(RECT2.getName(), RECT2);
         best.insert(RECT3.getName(), RECT3);
