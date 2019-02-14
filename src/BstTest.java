@@ -92,7 +92,6 @@ public class BstTest extends TestCase {
         best.insert(RECT4.getName(), RECT4);
         best.remove(RECT5.getName());
         best.insert(RECT5.getName(), RECT5);
-        // Test fails here on remove root
         best.remove(RECT6.getName());
         best.insert(RECT6.getName(), RECT6);
         best.remove(RECT7.getName());
@@ -105,10 +104,26 @@ public class BstTest extends TestCase {
     public void testSearch() {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
     	
+        // Test simple find
         best.insert(RECT1.getName(), RECT1);
         assertEquals(best.size(), 1);
         assertEquals(best.search(RECT1.getName()), RECT1);
+        // Test find without object
         assertNull(best.search(RECT2.getName()));
+        // Test find with full tree
+        best.insert(RECT2.getName(), RECT2);
+        best.insert(RECT3.getName(), RECT3);
+        best.insert(RECT4.getName(), RECT4);
+        best.insert(RECT5.getName(), RECT5);
+        best.insert(RECT6.getName(), RECT6);
+        best.insert(RECT7.getName(), RECT7);
+        assertEquals(best.search(RECT1.getName()), RECT1);
+        assertEquals(best.search(RECT2.getName()), RECT2);
+        assertEquals(best.search(RECT3.getName()), RECT3);
+        assertEquals(best.search(RECT4.getName()), RECT4);
+        assertEquals(best.search(RECT5.getName()), RECT5);
+        assertEquals(best.search(RECT6.getName()), RECT6);
+        assertEquals(best.search(RECT7.getName()), RECT7);
     }
 
     /**

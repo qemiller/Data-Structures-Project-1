@@ -7,6 +7,9 @@
  * @version 2-12-2019
  * 
  */
+
+import java.lang.Math;
+
 public class Rectangle
 {
     private String name;
@@ -87,20 +90,27 @@ public class Rectangle
     // Used for intersections
     public boolean intersects(Rectangle r)
     {
-        // Checks to see if x boundaries are crossed
-        if ((x >= r.getXVal() && x < r.getXEnd() && xEnd > r.getXEnd())
-                || (x < r.getXVal() && xEnd > r.getXVal()
-                        && xEnd <= r.getXEnd()))
-        {
-            // Checks to see if it is within y boundaries
-            return ((y >= r.getYVal() && y <= r.getYEnd()
-                    && yEnd >= r.getYEnd())
-                    || (y <= r.getYVal() && yEnd >= r.getYVal()
-                            && yEnd <= r.getYEnd()));
-        }
-        else
-        {
+        int leftX = Math.max(x, r.getXVal());
+        int rightX = Math.min(xEnd, r.getXEnd());
+        // Rectangles don't intersect
+        if (rightX <= leftX)
             return false;
+        else {
+            int topY = Math.max(y, r.getYVal());
+            int bottomY = Math.min(yEnd, r.getYEnd());
+            // Rectangles don't intersect
+            if (bottomY <= topY)
+                return false;
+            // Current node is inside of other node
+            else if(leftX == x && rightX == xEnd && topY == y && bottomY == yEnd){
+            	return false;
+            }
+            else if(leftX == r.getXVal() && rightX == r.getXEnd()
+            		&& topY == r.getYVal() && bottomY == r.getYEnd()) {
+            	return false;
+            }
+            else
+                return true;
         }
     }
 
