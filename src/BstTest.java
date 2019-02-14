@@ -11,30 +11,44 @@ import junit.framework.TestCase;
  * @version 1.2
  */
 public class BstTest extends TestCase {
-	// Test rectangles for node usage
-    public static final Rectangle rect1 = new Rectangle("dala", 1, 2, 3, 4);
-    // Test rectangles for node usage
-    public static final Rectangle rect2 = new Rectangle("bala", 1, 2, 3, 4);
-    // Test rectangles for node usage
-    public static final Rectangle rect3 = new Rectangle("cala", 1, 2, 3, 4);
-    // Test rectangles for node usage
-    public static final Rectangle rect4 = new Rectangle("ala", 1, 2, 3, 4);
-    // Test rectangles for node usage
-    public static final Rectangle rect5 = new Rectangle("eala", 1, 2, 3, 4);
-    // Test rectangles for node usage
-    public static final Rectangle rect6 = new Rectangle("fala", 1, 2, 3, 4);
-    // Test rectangles for node usage
-    public static final Rectangle rect7 = new Rectangle("gala", 1, 2, 3, 4);
+    /**
+     *  Test rectangles for node usage
+     */
+    public static final Rectangle RECT1 = new Rectangle("dala", 1, 2, 3, 4);
+    /**
+     *  Test rectangles for node usage
+     */
+    public static final Rectangle RECT2 = new Rectangle("bala", 1, 2, 3, 4);
+    /**
+     *  Test rectangles for node usage
+     */
+    public static final Rectangle RECT3 = new Rectangle("cala", 1, 2, 3, 4);
+    /**
+     *  Test rectangles for node usage
+     */
+    public static final Rectangle RECT4 = new Rectangle("ala", 1, 2, 3, 4);
+    /**
+     *  Test rectangles for node usage
+     */
+    public static final Rectangle RECT5 = new Rectangle("eala", 1, 2, 3, 4);
+    /**
+     *  Test rectangles for node usage
+     */
+    public static final Rectangle RECT6 = new Rectangle("fala", 1, 2, 3, 4);
+    /**
+     *  Test rectangles for node usage
+     */
+    public static final Rectangle RECT7 = new Rectangle("gala", 1, 2, 3, 4);
 
     /**
      * Test basic insert functionality
      */
     public void testInsert() {
-    	Bst<String, Rectangle> best = new Bst<String, Rectangle>();
+        Bst<String, Rectangle> best = new Bst<String, Rectangle>();
     	
-        best.insert(rect1.getName(), rect1);
-        best.insert(rect2.getName(), rect2);
-        best.insert(rect3.getName(), rect3);
+        best.insert(RECT1.getName(), RECT1);
+        best.insert(RECT2.getName(), RECT2);
+        best.insert(RECT3.getName(), RECT3);
         assertEquals(best.size(), 3);
     }
 
@@ -42,59 +56,59 @@ public class BstTest extends TestCase {
      * Test remove functionality
      */
     public void testRemove() {
-    	Bst<String, Rectangle> best = new Bst<String, Rectangle>();
+        Bst<String, Rectangle> best = new Bst<String, Rectangle>();
     	
         // Insert and remove any
-        best.insert(rect1.getName(), rect1);
+        best.insert(RECT1.getName(), RECT1);
         assertEquals(best.size(), 1);
         best.removeAny();
         assertEquals(best.size(), 0);
         // Nothing to remove
         assertNull(best.removeAny());
         // Insert and remove by name
-        best.insert(rect1.getName(), rect1);
+        best.insert(RECT1.getName(), RECT1);
         assertEquals(best.size(), 1);
-        best.remove(rect1.getName());
+        best.remove(RECT1.getName());
         assertEquals(best.size(), 0);
         // Insert and then try to remove the wrong one
-        best.insert(rect1.getName(), rect1);
+        best.insert(RECT1.getName(), RECT1);
         assertEquals(best.size(), 1);
-        best.remove(rect2.getName());
+        best.remove(RECT2.getName());
         assertEquals(best.size(), 1);
         // Remove with multiple things in tree
-        best.insert(rect2.getName(), rect2);
-        best.insert(rect3.getName(), rect3);
-        best.insert(rect4.getName(), rect4);
-        best.insert(rect5.getName(), rect5);
-        best.insert(rect6.getName(), rect6);
-        best.insert(rect7.getName(), rect7);
-        best.remove(rect1.getName());
-        best.insert(rect1.getName(), rect1);
-        best.remove(rect2.getName());
-        best.insert(rect2.getName(), rect2);
-        best.remove(rect3.getName());
-        best.insert(rect3.getName(), rect3);
-        best.remove(rect4.getName());
-        best.insert(rect4.getName(), rect4);
-        best.remove(rect5.getName());
-        best.insert(rect5.getName(), rect5);
+        best.insert(RECT2.getName(), RECT2);
+        best.insert(RECT3.getName(), RECT3);
+        best.insert(RECT4.getName(), RECT4);
+        best.insert(RECT5.getName(), RECT5);
+        best.insert(RECT6.getName(), RECT6);
+        best.insert(RECT7.getName(), RECT7);
+        best.remove(RECT1.getName());
+        best.insert(RECT1.getName(), RECT1);
+        best.remove(RECT2.getName());
+        best.insert(RECT2.getName(), RECT2);
+        best.remove(RECT3.getName());
+        best.insert(RECT3.getName(), RECT3);
+        best.remove(RECT4.getName());
+        best.insert(RECT4.getName(), RECT4);
+        best.remove(RECT5.getName());
+        best.insert(RECT5.getName(), RECT5);
         // Test fails here on remove root
-        best.remove(rect6.getName());
-        best.insert(rect6.getName(), rect6);
-        best.remove(rect7.getName());
-        best.insert(rect7.getName(), rect7);
+        best.remove(RECT6.getName());
+        best.insert(RECT6.getName(), RECT6);
+        best.remove(RECT7.getName());
+        best.insert(RECT7.getName(), RECT7);
     }
 
     /**
      * Test search functionality
      */
     public void testSearch() {
-    	Bst<String, Rectangle> best = new Bst<String, Rectangle>();
+        Bst<String, Rectangle> best = new Bst<String, Rectangle>();
     	
-        best.insert(rect1.getName(), rect1);
+        best.insert(RECT1.getName(), RECT1);
         assertEquals(best.size(), 1);
-        assertEquals(best.search(rect1.getName()), rect1);
-        assertNull(best.search(rect2.getName()));
+        assertEquals(best.search(RECT1.getName()), RECT1);
+        assertNull(best.search(RECT2.getName()));
     }
 
     /**
@@ -107,13 +121,13 @@ public class BstTest extends TestCase {
         assertEquals(best.size(), 0);
         best.dump();
         // Test full dump
-        best.insert(rect1.getName(), rect1);
-        best.insert(rect2.getName(), rect2);
-        best.insert(rect3.getName(), rect3);
-        best.insert(rect4.getName(), rect4);
-        best.insert(rect5.getName(), rect5);
-        best.insert(rect6.getName(), rect6);
-        best.insert(rect7.getName(), rect7);
+        best.insert(RECT1.getName(), RECT1);
+        best.insert(RECT2.getName(), RECT2);
+        best.insert(RECT3.getName(), RECT3);
+        best.insert(RECT4.getName(), RECT4);
+        best.insert(RECT5.getName(), RECT5);
+        best.insert(RECT6.getName(), RECT6);
+        best.insert(RECT7.getName(), RECT7);
         assertEquals(best.size(), 7);
         best.dump();
     }
@@ -122,15 +136,15 @@ public class BstTest extends TestCase {
      * Test iteration through the tree
      */
     public void testIterTools() {
-    	Bst<String, Rectangle> best = new Bst<String, Rectangle>();
+        Bst<String, Rectangle> best = new Bst<String, Rectangle>();
     	
-        best.insert(rect1.getName(), rect1);
-        best.insert(rect2.getName(), rect2);
-        best.insert(rect3.getName(), rect3);
-        best.insert(rect4.getName(), rect4);
-        best.insert(rect5.getName(), rect5);
-        best.insert(rect6.getName(), rect6);
-        best.insert(rect7.getName(), rect7);
+        best.insert(RECT1.getName(), RECT1);
+        best.insert(RECT2.getName(), RECT2);
+        best.insert(RECT3.getName(), RECT3);
+        best.insert(RECT4.getName(), RECT4);
+        best.insert(RECT5.getName(), RECT5);
+        best.insert(RECT6.getName(), RECT6);
+        best.insert(RECT7.getName(), RECT7);
         assertEquals(best.size(), 7);
         BstNode<String, Rectangle> tempNode = best.getFirst();
         while (tempNode != null) {
