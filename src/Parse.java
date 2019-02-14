@@ -106,18 +106,9 @@ public class Parse
      */
     private boolean coordinatesCorrect(int x, int y, int w, int h)
     {
-        if (x >= 0 && y >= 0)
-        {
-            if (w > 0 && h > 0)
-            {
-                if (w + x <= 1024 && w + x > 0)
-                {
-                    if (y + h <= 1024 && y + h > 0)
-                        return true;
-                }
-            }
-        }
-        return false;
+        return (x >= 0 && y >= 0 && w > 0 && h > 0 && w + x <= 1024 
+                && w + x > 0 && y + h <= 1024 && y + h > 0);
+       
     }
 
     /**
@@ -310,7 +301,7 @@ public class Parse
      */
     public boolean handleIntersections(Bst<String, Rectangle> tree)
     {
-        System.out.print("Intersecting Rectangles: \n");
+        System.out.print("Intersection pairs: \n");
         BstNode<String, Rectangle> storedNode = tree.getFirst();
         if (storedNode == null)
         {

@@ -10,40 +10,42 @@ import junit.framework.TestCase;
  * @author Josh
  * @version 1.2
  */
-public class BstTest extends TestCase {
+public class BstTest extends TestCase
+{
     /**
-     *  Test rectangles for node usage
+     * Test rectangles for node usage
      */
     public static final Rectangle RECT1 = new Rectangle("dala", 1, 2, 3, 4);
     /**
-     *  Test rectangles for node usage
+     * Test rectangles for node usage
      */
     public static final Rectangle RECT2 = new Rectangle("bala", 1, 2, 3, 4);
     /**
-     *  Test rectangles for node usage
+     * Test rectangles for node usage
      */
     public static final Rectangle RECT3 = new Rectangle("cala", 1, 2, 3, 4);
     /**
-     *  Test rectangles for node usage
+     * Test rectangles for node usage
      */
     public static final Rectangle RECT4 = new Rectangle("ala", 1, 2, 3, 4);
     /**
-     *  Test rectangles for node usage
+     * Test rectangles for node usage
      */
     public static final Rectangle RECT5 = new Rectangle("eala", 1, 2, 3, 4);
     /**
-     *  Test rectangles for node usage
+     * Test rectangles for node usage
      */
     public static final Rectangle RECT6 = new Rectangle("fala", 1, 2, 3, 4);
     /**
-     *  Test rectangles for node usage
+     * Test rectangles for node usage
      */
     public static final Rectangle RECT7 = new Rectangle("gala", 1, 2, 3, 4);
 
     /**
      * Test basic insert functionality
      */
-    public void testInsert() {
+    public void testInsert()
+    {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
          
         best.insert(RECT1.getName(), RECT1);
@@ -55,7 +57,8 @@ public class BstTest extends TestCase {
     /**
      * Test remove functionality
      */
-    public void testRemove() {
+    public void testRemove()
+    {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
          
         // Insert and remove any
@@ -101,7 +104,8 @@ public class BstTest extends TestCase {
     /**
      * Test search functionality
      */
-    public void testSearch() {
+    public void testSearch()
+    {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
          
         // Test simple find
@@ -150,9 +154,10 @@ public class BstTest extends TestCase {
     /**
      * Test iteration through the tree
      */
-    public void testIterTools() {
+    public void testIterTools()
+    {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
-    	
+
         best.insert(RECT1.getName(), RECT1);
         best.insert(RECT2.getName(), RECT2);
         best.insert(RECT3.getName(), RECT3);
@@ -162,7 +167,8 @@ public class BstTest extends TestCase {
         best.insert(RECT7.getName(), RECT7);
         assertEquals(best.size(), 7);
         BstNode<String, Rectangle> tempNode = best.getFirst();
-        while (tempNode != null) {
+        while (tempNode != null)
+        {
             tempNode = best.getNext(tempNode);
         }
     }
