@@ -86,7 +86,7 @@ public class Parse
                 tree.remove(curNode.element().getName());
                 removedOne = true;
                 break;
-            } 
+            }
             else
             {
                 curNode = tree.getNext(curNode);
@@ -106,8 +106,18 @@ public class Parse
      */
     private boolean coordinatesCorrect(int x, int y, int w, int h)
     {
-        return (x + w <= 1024 && x >= 0 && y + h <= 1024 && y >= 0 && w > 0
-                && h > 0);
+        if (x >= 0 && y >= 0)
+        {
+            if (w > 0 && h > 0)
+            {
+                if (w + x <= 1024 && w + x > 0)
+                {
+                    if (y + h <= 1024 && y + h > 0)
+                        return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -132,7 +142,7 @@ public class Parse
                 tree.insert(rectInsert.getName(), rectInsert);
                 System.out.println(
                         "Rectangle accepted: " + rectInsert.toString());
-            }
+            } 
             else
             {
                 System.out.println(
@@ -149,7 +159,7 @@ public class Parse
             Rectangle rectInsert = new Rectangle(name, x, y, w, h);
             System.out.println("Rectangle rejected: " + rectInsert.toString());
             return false;
-        }   
+        }
         return true;
     }
 
@@ -173,7 +183,7 @@ public class Parse
             int h = sc.nextInt();
             if (!removeCoordinate(x, y, w, h, tree))
             {
-                System.out.println("Rectangle rejected (" + x + "," + y + ","
+                System.out.println("Rectangle rejected: (" + x + "," + y + ","
                         + w + "," + h + ")");
                 return false;
             }
@@ -185,7 +195,7 @@ public class Parse
             // coordinates,
             // remove by name
             {
-                System.out.println("Rectangle rejected " + name);
+                System.out.println("Rectangle rejected: " + name);
                 return false;
             }
         }
@@ -259,27 +269,36 @@ public class Parse
     {
         BstNode<String, Rectangle> currNodeRegion = tree.getFirst(); // current
                                                                      // node for
-                                                                 // regionsearch
-        System.out.println("Rectanagles intersecting region  " + "(" + x + ","
-                + y + "," + w + "," + h + "): ");
-        while (currNodeRegion != null)
+        // regionsearch
+        if (coordinatesCorrect(x, y, w, h))
         {
-            // search through the whole tree to see if there are
-            // any Rectangles in the region
-            if (currNodeRegion.element().isContained(x, y, w, h))
+            System.out.println("Rectanagles intersecting region " + "(" + x
+                    + ", " + y + ", " + w + ", " + h + "): ");
+            while (currNodeRegion != null)
             {
-                // Rectangles are stored as elements so check to
-                // see
-                // if it is contained in the region.
-                System.out.println(currNodeRegion.element().toString());
-                currNodeRegion = tree.getNext(currNodeRegion);
+                // search through the whole tree to see if there are
+                // any Rectangles in the region
+                if (currNodeRegion.element().isContained(x, y, w, h))
+                {
+                    // Rectangles are stored as elements so check to
+                    // see
+                    // if it is contained in the region.
+                    System.out.println(currNodeRegion.element().toString());
+                    currNodeRegion = tree.getNext(currNodeRegion);
+                } 
+                else // find next node in the tree
+                {
+                    currNodeRegion = tree.getNext(currNodeRegion);
+                }
             }
-            else // find next node in the tree
-            {
-                currNodeRegion = tree.getNext(currNodeRegion);
-            }
+            return true;
         }
-        return true;
+        else
+        {
+            System.out.println("Rectangle rejected: " + "(" + x + ", " + y
+                    + ", " + w + ", " + h + ") ");
+            return false;
+        }
     }
 
     /**

@@ -29,10 +29,11 @@ public class ParseTest extends TestCase
     {
         sc = new Scanner("1 2 3 4");
         assertTrue(test.handleInsert("Yogi", tree, sc));
-        sc = new Scanner("1 2 3 1024");
+        sc = new Scanner("1 2 1024 1024");
         assertFalse(test.handleInsert("Yogi", tree, sc));
         sc = new Scanner("1 2 3 1024");
         assertFalse(test.handleInsert("1Yogi", tree, sc));
+        
     }
     
     /**
@@ -86,6 +87,9 @@ public class ParseTest extends TestCase
         sc = new Scanner("60 80 50 60");
         test.handleInsert("Josh", tree, sc);
         assertTrue(test.handleRegionSearch(0, 1, 50, 40, tree));
+        sc = new Scanner("1 2 0 4");
+        assertFalse(test.handleRegionSearch(1, 2, 0, 4, tree));
+        
     }
      /**
       * test intersection methods
