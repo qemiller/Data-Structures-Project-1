@@ -106,7 +106,7 @@ public class Parse
      */
     private boolean coordinatesCorrect(int x, int y, int w, int h)
     {
-        return (x >= 0 && y >= 0 && w > 0 && h > 0 && w + x <= 1024 
+        return (x > -1 && y > -1 && w > 0 && h > 0 && w + x <= 1024 
                 && w + x > 0 && y + h <= 1024 && y + h > 0);
        
     }
@@ -174,8 +174,8 @@ public class Parse
             int h = sc.nextInt();
             if (!removeCoordinate(x, y, w, h, tree))
             {
-                System.out.println("Rectangle rejected: (" + x + "," + y + ","
-                        + w + "," + h + ")");
+                System.out.println("Rectangle rejected: (" + x + ", " + y + ", "
+                        + w + ", " + h + ")");
                 return false;
             }
         } 
@@ -219,12 +219,7 @@ public class Parse
           // search through the tree
             if (currNode.element().getName() == name)
             {
-                // b/c the Rectangles are stored as elements in
-                // the
-                // tree, get it and check if its the right name.
-                // If
-                // correct, output the Rectangle. If not, keep
-                // searching.
+                
                 System.out.println(
                         "Rectangle Found: " + currNode.element().toString());
                 currNode = tree.getNext(currNode);
