@@ -97,7 +97,7 @@ public class Bst<K extends Comparable<? super K>, E>
      */
     private BstNode<K, E> removehelp(BstNode<K, E> rt, K k)
     {
-    	if (rt == null)
+        if (rt == null)
         {
             return null;
         }

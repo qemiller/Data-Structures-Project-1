@@ -40,23 +40,6 @@ public class BstNode<K, E>
     }
 
     /**
-     * 
-     * @param k key
-     * @param val value at node
-     * @param l left child
-     * @param r right child
-     */
-    public BstNode(K k, E val, BstNode<K, E> l, BstNode<K, E> r)
-    {
-        left = l;
-        right = r;
-        l.parent = this;
-        r.parent = this;
-        key = k;
-        element = val;
-    }
-
-    /**
      * key getter
      * @return Key value
      */
@@ -113,10 +96,11 @@ public class BstNode<K, E>
      */
     public BstNode<K, E> setLeft(BstNode<K, E> p)
     {
-    	if(p != null) {
+        if (p != null) {
         	p.parent = this;
         }
-        return left = p;
+        left = p;
+        return left;
     }
 
     /**
@@ -135,10 +119,11 @@ public class BstNode<K, E>
      */
     public BstNode<K, E> setRight(BstNode<K, E> p)
     {
-        if(p != null) {
+        if (p != null) {
         	p.parent = this;
         }
-        return right = p;
+        right = p;
+        return right;
     }
 
     /**
