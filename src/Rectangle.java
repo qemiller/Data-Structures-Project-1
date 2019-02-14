@@ -8,8 +8,6 @@
  * 
  */
 
-import java.lang.Math;
-
 public class Rectangle
 {
     private String name;
@@ -99,18 +97,21 @@ public class Rectangle
             int topY = Math.max(y, r.getYVal());
             int bottomY = Math.min(yEnd, r.getYEnd());
             // Rectangles don't intersect
-            if (bottomY <= topY)
+            if (bottomY <= topY) {
                 return false;
+            }
             // Current node is inside of other node
-            else if(leftX == x && rightX == xEnd && topY == y && bottomY == yEnd){
-            	return false;
+            else if (leftX == x && rightX == xEnd
+                    && topY == y && bottomY == yEnd) {
+                return false;
             }
-            else if(leftX == r.getXVal() && rightX == r.getXEnd()
-            		&& topY == r.getYVal() && bottomY == r.getYEnd()) {
-            	return false;
+            else if (leftX == r.getXVal() && rightX == r.getXEnd()
+                    && topY == r.getYVal() && bottomY == r.getYEnd()) {
+                return false;
             }
-            else
+            else {
                 return true;
+            }
         }
     }
 

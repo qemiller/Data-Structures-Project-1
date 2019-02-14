@@ -45,7 +45,7 @@ public class BstTest extends TestCase {
      */
     public void testInsert() {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
-    	
+         
         best.insert(RECT1.getName(), RECT1);
         best.insert(RECT2.getName(), RECT2);
         best.insert(RECT3.getName(), RECT3);
@@ -57,7 +57,7 @@ public class BstTest extends TestCase {
      */
     public void testRemove() {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
-    	
+         
         // Insert and remove any
         best.insert(RECT1.getName(), RECT1);
         assertEquals(best.size(), 1);
@@ -103,7 +103,7 @@ public class BstTest extends TestCase {
      */
     public void testSearch() {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
-    	
+         
         // Test simple find
         best.insert(RECT1.getName(), RECT1);
         assertEquals(best.size(), 1);
@@ -130,8 +130,8 @@ public class BstTest extends TestCase {
      * Test for proper dump output
      */
     public void testDump() {
-    	Bst<String, Rectangle> best = new Bst<String, Rectangle>();
-    	
+         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
+         
         // Test empty dump
         assertEquals(best.size(), 0);
         best.dump();
