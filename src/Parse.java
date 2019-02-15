@@ -83,8 +83,7 @@ public class Parse
         {
             if (curNode.element().isExact(x, y, w, h))
             {
-                curNode.element();
-                tree.remove(curNode.element().getName());
+                tree.remove(curNode.element().getName(), curNode.element());
                 removedOne = true;
                 curNode = tree.getNext(curNode);
             }

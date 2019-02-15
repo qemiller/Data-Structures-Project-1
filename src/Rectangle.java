@@ -91,8 +91,7 @@ public class Rectangle
         int leftX = Math.max(x, r.getXVal());
         int rightX = Math.min(xEnd, r.getXEnd());
         // Rectangles don't intersect
-        if (rightX <= leftX)
-        {
+        if (rightX <= leftX) {
             return false;
         }
         else
@@ -105,9 +104,8 @@ public class Rectangle
                 return false;
             }
             // Current node is inside of other node
-            else if (leftX == x && rightX == xEnd && topY == y
-                    && bottomY == yEnd)
-            {
+            else if (leftX == x && rightX == xEnd
+                    && topY == y && bottomY == yEnd) {
                 return false;
             }
             return !(leftX == r.getXVal() && rightX == r.getXEnd()
