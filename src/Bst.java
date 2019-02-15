@@ -54,23 +54,6 @@ public class Bst<K extends Comparable<? super K>, E>
     }
 
     /**
-     * Remove a record from the tree.
-     * 
-     * @param k Key value of record to remove.
-     * @return Record removed, or null if there is none.
-     */
-    public E remove(K k)
-    {
-        E temp = searchhelp(root, k); // find it
-        if (temp != null)
-        {
-            root = removehelp(root, k); // remove it
-            nodecount--;
-        }
-        return temp;
-    }
-
-    /**
      * Remove/return root node from dictionary.
      * 
      * @return The record removed, null if empty.
@@ -88,6 +71,36 @@ public class Bst<K extends Comparable<? super K>, E>
         {
             return null;
         }
+    }
+    
+    /**
+     * Remove a record from the tree.
+     * 
+     * @param k Key value of record to remove.
+     * @return Record removed, or null if there is none.
+     */
+    public E remove(K k)
+    {
+        E temp = searchhelp(root, k); // find it
+        if (temp != null)
+        {
+            root = removehelp(root, k); // remove it
+            nodecount--;
+        }
+        return temp;
+    }
+    
+    /**
+     * Remove a record from the tree.
+     * 
+     * @param k Key value of record to remove.
+     * @param e Element value of record to remove.
+     * @return Record removed, or null if there is none.
+     */
+    public void remove(K k, E e)
+    {
+        root = removehelp(root, k, e); // remove it
+        nodecount--;
     }
 
     /**
@@ -111,6 +124,52 @@ public class Bst<K extends Comparable<? super K>, E>
         } 
         else
         { // Found it, remove it
+            
+        	if (rt.left() == null)
+            {
+                return rt.right();
+            } 
+            else if (rt.right() == null)
+            {
+                return rt.left();
+            } 
+            else
+            { // Two children
+                BstNode<K, E> temp = getmin(rt.right());
+                rt.setElement(temp.element());
+                rt.setKey(temp.key());
+                rt.setRight(deletemin(rt.right()));
+            }
+        }
+        return rt;
+    }
+    
+    /**
+     * Remove a node with key value k
+     * 
+     * @return The tree with the node removed
+     */
+    private BstNode<K, E> removehelp(BstNode<K, E> rt, K k, E e)
+    {
+        if (rt == null)
+        {
+            return null;
+        }
+        if (rt.key().compareTo(k) > 0)
+        {
+            rt.setLeft(removehelp(rt.left(), k, e));
+        } 
+        else if (rt.key().compareTo(k) < 0)
+        {
+            rt.setRight(removehelp(rt.right(), k, e));
+        }
+        else
+        { // Found it, remove it
+        	// Check first node for element for same name
+        	if (rt.element() != e) {
+        	    rt.setRight(removehelp(rt.right(), k, e));
+        	    return rt;
+        	}
             if (rt.left() == null)
             {
                 return rt.right();

@@ -97,6 +97,26 @@ public class BstTest extends TestCase {
         best.remove(RECT7.getName());
         best.insert(RECT7.getName(), RECT7);
     }
+    
+    public void testRemoveCoordinate() {
+        Bst<String, Rectangle> best = new Bst<String, Rectangle>();
+        Rectangle rec = new Rectangle("came", 1, 1, 1, 1);
+//        Rectangle rec1 = new Rectangle("came", 1, 2, 3, 4);
+        Rectangle rec2 = new Rectangle("came", 1, 3, 5, 7);
+        Rectangle rec3 = new Rectangle("came", 1, 4, 7, 10);
+        
+        best.insert(rec.getName(), rec);
+        best.insert(RECT1.getName(), RECT1);
+        best.insert(RECT2.getName(), RECT2);
+        best.insert(RECT3.getName(), RECT3);
+        best.insert(RECT4.getName(), RECT4);
+        best.insert(rec2.getName(), rec2);
+        best.insert(RECT5.getName(), RECT5);
+        best.insert(RECT6.getName(), RECT6);
+        best.insert(RECT7.getName(), RECT7);
+        best.insert(rec3.getName(), rec3);
+        best.remove(rec3.getName(), rec3);
+    }
 
     /**
      * Test search functionality
