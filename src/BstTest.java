@@ -98,14 +98,16 @@ public class BstTest extends TestCase {
         best.insert(RECT7.getName(), RECT7);
     }
     
+    /**
+     * Tests remove by coordinates with multiple of the same name
+     */
     public void testRemoveCoordinate() {
         Bst<String, Rectangle> best = new Bst<String, Rectangle>();
-        Rectangle rec = new Rectangle("came", 1, 1, 1, 1);
-//        Rectangle rec1 = new Rectangle("came", 1, 2, 3, 4);
+        Rectangle rec1 = new Rectangle("came", 1, 1, 1, 1);
         Rectangle rec2 = new Rectangle("came", 1, 3, 5, 7);
         Rectangle rec3 = new Rectangle("came", 1, 4, 7, 10);
         
-        best.insert(rec.getName(), rec);
+        best.insert(rec1.getName(), rec1);
         best.insert(RECT1.getName(), RECT1);
         best.insert(RECT2.getName(), RECT2);
         best.insert(RECT3.getName(), RECT3);
@@ -116,6 +118,7 @@ public class BstTest extends TestCase {
         best.insert(RECT7.getName(), RECT7);
         best.insert(rec3.getName(), rec3);
         best.remove(rec3.getName(), rec3);
+        assertEquals(best.size(), 9);
     }
 
     /**

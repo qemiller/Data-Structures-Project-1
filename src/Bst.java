@@ -95,7 +95,6 @@ public class Bst<K extends Comparable<? super K>, E>
      * 
      * @param k Key value of record to remove.
      * @param e Element value of record to remove.
-     * @return Record removed, or null if there is none.
      */
     public void remove(K k, E e)
     {
@@ -125,7 +124,7 @@ public class Bst<K extends Comparable<? super K>, E>
         else
         { // Found it, remove it
             
-        	if (rt.left() == null)
+            if (rt.left() == null)
             {
                 return rt.right();
             } 
@@ -165,11 +164,11 @@ public class Bst<K extends Comparable<? super K>, E>
         }
         else
         { // Found it, remove it
-        	// Check first node for element for same name
-        	if (rt.element() != e) {
-        	    rt.setRight(removehelp(rt.right(), k, e));
-        	    return rt;
-        	}
+            // Check first node for element for same name
+            if (rt.element() != e) {
+                rt.setRight(removehelp(rt.right(), k, e));
+                return rt;
+            }
             if (rt.left() == null)
             {
                 return rt.right();
