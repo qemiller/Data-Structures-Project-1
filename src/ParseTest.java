@@ -45,7 +45,9 @@ public class ParseTest extends TestCase
         assertFalse(test.handleInsert("Yogi", tree, sc));
         sc = new Scanner("1 2 3 6723");
         assertFalse(test.handleInsert("Yogi", tree, sc));
-        }
+        sc = new Scanner("1000 1000 400 p");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+    }
     
     /**
      * test remove method

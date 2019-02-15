@@ -76,8 +76,8 @@ public class BstTest extends TestCase
         // Insert and then try to remove the wrong one
         best.insert(RECT1.getName(), RECT1);
         assertEquals(best.size(), 1);
-        best.remove(RECT2.getName());
-        assertEquals(best.size(), 1);
+        best.remove(RECT1.getName());
+        assertEquals(best.size(), 0);
         // Remove with multiple things in tree
         best.insert(RECT2.getName(), RECT2);
         best.insert(RECT3.getName(), RECT3);

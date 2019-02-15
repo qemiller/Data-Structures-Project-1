@@ -108,7 +108,7 @@ public class Parse
     {
         if (x >= 0 && y >= 0)
         {
-            if (w > 0 && h > 0 ) 
+            if (w > 0 && h > 0 && w < 1024 && h < 1024) 
             {
                 if (x + w <= 1024)
                 {
