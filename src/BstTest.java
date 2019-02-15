@@ -19,7 +19,7 @@ public class BstTest extends TestCase
     /**
      * Test rectangles for node usage
      */
-    public static final Rectangle RECT2 = new Rectangle("dala", 1, 2, 3, 4);
+    public static final Rectangle RECT2 = new Rectangle("bala", 1, 2, 3, 4);
     /**
      * Test rectangles for node usage
      */
@@ -35,11 +35,11 @@ public class BstTest extends TestCase
     /**
      * Test rectangles for node usage
      */
-    public static final Rectangle RECT6 = new Rectangle("dala", 1, 2, 3, 4);
+    public static final Rectangle RECT6 = new Rectangle("fala", 1, 2, 3, 4);
     /**
      * Test rectangles for node usage
      */
-    public static final Rectangle RECT7 = new Rectangle("dala", 1, 2, 3, 4);
+    public static final Rectangle RECT7 = new Rectangle("gala", 1, 2, 3, 4);
 
     /**
      * Test basic insert functionality

@@ -106,14 +106,13 @@ public class Parse
      */
     private boolean coordinatesCorrect(int x, int y, int w, int h)
     {
-        if (x > -1 && y > -1)
+        if (x >= 0 && y >= 0)
         {
             if (w > 0 && h > 0 ) 
             {
                 if (x + w <= 1024)
                 {
                     return (y + h <= 1024);
-       
                 }
             }
         }
