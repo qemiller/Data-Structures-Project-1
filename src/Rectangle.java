@@ -70,7 +70,7 @@ public class Rectangle
             return ((y >= yVar && y <= (yVar + h))
                     || (yEnd <= yVar && yEnd >= (yVar + h)));
 
-        } 
+        }
         else
         {
             return false;
@@ -95,24 +95,24 @@ public class Rectangle
         {
             return false;
         }
-        else {
+        else
+        {
             int topY = Math.max(y, r.getYVal());
             int bottomY = Math.min(yEnd, r.getYEnd());
             // Rectangles don't intersect
-            if (bottomY <= topY) {
+            if (bottomY <= topY)
+            {
                 return false;
             }
             // Current node is inside of other node
-            else if (leftX == x && rightX == xEnd
-                    && topY == y && bottomY == yEnd) {
+            else if (leftX == x && rightX == xEnd && topY == y
+                    && bottomY == yEnd)
+            {
                 return false;
             }
-            else if (leftX == r.getXVal() && rightX == r.getXEnd()
-                    && topY == r.getYVal() && bottomY == r.getYEnd()) {
-                return false;
-            }
+            return !(leftX == r.getXVal() && rightX == r.getXEnd()
+                    && topY == r.getYVal() && bottomY == r.getYEnd());
         }
-        return true;
     }
 
     /**

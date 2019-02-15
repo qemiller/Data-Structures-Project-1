@@ -33,8 +33,19 @@ public class ParseTest extends TestCase
         assertFalse(test.handleInsert("Yogi", tree, sc));
         sc = new Scanner("1 2 3 1024");
         assertFalse(test.handleInsert("1Yogi", tree, sc));
-        
-    }
+        sc = new Scanner("1 2 3 6723");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        sc = new Scanner("1 -6722 3 6723");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        sc = new Scanner("-40 -6722 3 6723");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        sc = new Scanner("8 4 -3 6723");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        sc = new Scanner("1 50 3 -6723");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        sc = new Scanner("1 2 3 6723");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        }
     
     /**
      * test remove method

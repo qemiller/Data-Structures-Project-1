@@ -83,9 +83,10 @@ public class Parse
         {
             if (curNode.element().isExact(x, y, w, h))
             {
+                curNode.element();
                 tree.remove(curNode.element().getName());
                 removedOne = true;
-                break;
+                curNode = tree.getNext(curNode);
             }
             else
             {
@@ -106,9 +107,18 @@ public class Parse
      */
     private boolean coordinatesCorrect(int x, int y, int w, int h)
     {
-        return (x > -1 && y > -1 && w > 0 && h > 0 && w + x <= 1024 
-                && w + x > 0 && y + h <= 1024 && y + h > 0);
+        if (x > -1 && y > -1)
+        {
+            if (w > 0 && h > 0 ) 
+            {
+                if (x + w <= 1024)
+                {
+                    return (y + h <= 1024);
        
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -256,7 +266,8 @@ public class Parse
         BstNode<String, Rectangle> currNodeRegion = tree.getFirst(); // current
                                                                      // node for
         // regionsearch
-        if (coordinatesCorrect(x, y, w, h))
+        if (w > 0 && h > 0 && x + w <= 1024 && x + w > 0 
+                && y + h <= 1024 && y + h > 0)
         {
             System.out.println("Rectanagles intersecting region " + "(" + x
                     + ", " + y + ", " + w + ", " + h + "): ");
