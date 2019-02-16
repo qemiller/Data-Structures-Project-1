@@ -31,7 +31,7 @@ public class ParseTest extends TestCase
         assertTrue(test.handleInsert("Yogi", tree, sc));
         sc = new Scanner("1 2 1024 1024");
         assertFalse(test.handleInsert("Yogi", tree, sc));
-        sc = new Scanner("1 2 3 1024");
+        sc = new Scanner("1 2 3 4");
         assertFalse(test.handleInsert("1Yogi", tree, sc));
         sc = new Scanner("1 2 3 6723");
         assertFalse(test.handleInsert("Yogi", tree, sc));
@@ -45,7 +45,23 @@ public class ParseTest extends TestCase
         assertFalse(test.handleInsert("Yogi", tree, sc));
         sc = new Scanner("1 2 3 6723");
         assertFalse(test.handleInsert("Yogi", tree, sc));
-        sc = new Scanner("1000 1000 400 p");
+        sc = new Scanner("1000 1000 400 10");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        
+        //New tests
+        // Test Full boundaries
+        sc = new Scanner("0 0 1024 1024");
+        assertTrue(test.handleInsert("Yogi", tree, sc));
+        // Test with negative x/y
+        sc = new Scanner("-1 -1 1024 1024");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        // Test with greater than bounds
+        sc = new Scanner("0 0 1025 1025");
+        assertFalse(test.handleInsert("Yogi", tree, sc));
+        // Test additive bounds
+        sc = new Scanner("1023 1023 1 1");
+        assertTrue(test.handleInsert("Yogi", tree, sc));
+        sc = new Scanner("1023 1023 2 2");
         assertFalse(test.handleInsert("Yogi", tree, sc));
     }
     
@@ -64,9 +80,11 @@ public class ParseTest extends TestCase
         test.handleInsert("Yogi", tree, sc);
         sc = new Scanner("2 4 4");
         assertFalse(test.handleRemove("1", sc, tree));
-        sc = new Scanner(" 2 3 4");
+        sc = new Scanner("2 3 4");
         assertTrue(test.handleRemove("1", sc, tree));
         
+        sc = new Scanner("2 3 4");
+        assertFalse(test.handleRemove("-1", sc, tree));
     }
     
     /**

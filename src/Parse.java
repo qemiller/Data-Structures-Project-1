@@ -108,7 +108,7 @@ public class Parse
     {
         if (x >= 0 && y >= 0)
         {
-            if (w > 0 && h > 0 && w < 1024 && h < 1024) 
+            if (w > 0 && h > 0 && w <= 1024 && h <= 1024) 
             {
                 if (x + w <= 1024)
                 {
@@ -173,7 +173,7 @@ public class Parse
     public boolean handleRemove(String name, Scanner sc,
             Bst<String, Rectangle> tree)
     {
-        if (Character.isDigit(name.charAt(0)))
+        if (Character.isDigit(name.charAt(0)) || name.charAt(0) == '-')
         { // Check to see if the input arguments are
           // coordinates.
             int x = Integer.parseInt(name);
