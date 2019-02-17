@@ -129,7 +129,9 @@ public class Parse
     public boolean handleInsert(String name, Bst<String, Rectangle> tree,
             Scanner sc)
     {
-        if (Character.isLetter(name.charAt(0)))
+        // Regex to check first letter is alphabet
+        // Then checks the rest for alphanumeric and underscore
+        if (name.matches("^[a-zA-Z][a-zA-Z0-9_]*$"))
         { // make sure the name starts with a letter
             int x = sc.nextInt();
             int y = sc.nextInt();
@@ -173,7 +175,8 @@ public class Parse
     public boolean handleRemove(String name, Scanner sc,
             Bst<String, Rectangle> tree)
     {
-        if (Character.isDigit(name.charAt(0)) || name.charAt(0) == '-')
+        if (name.length() > 0 && Character.isDigit(name.charAt(0))
+                || name.charAt(0) == '-')
         { // Check to see if the input arguments are
           // coordinates.
             int x = Integer.parseInt(name);
@@ -264,10 +267,9 @@ public class Parse
         BstNode<String, Rectangle> currNodeRegion = tree.getFirst(); // current
                                                                      // node for
         // regionsearch
-        if (w > 0 && h > 0 && x + w <= 1024 && x + w > 0 
-                && y + h <= 1024 && y + h > 0)
+        if (w > 0 && h > 0)
         {
-            System.out.println("Rectanagles intersecting region " + "(" + x
+            System.out.println("Rectangles intersecting region " + "(" + x
                     + ", " + y + ", " + w + ", " + h + "): ");
             while (currNodeRegion != null)
             {

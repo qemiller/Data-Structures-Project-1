@@ -95,9 +95,16 @@ public class ParseTest extends TestCase
         sc = new Scanner("1 2 3 4");
         assertFalse(test.handleSearch("Yogi", sc, tree));
         
+        test.handleInsert("Sogi", tree, sc);
+        assertFalse(test.handleSearch("Yogi", sc, tree));
+        
+        sc = new Scanner("1 2 3 4");
         test.handleInsert("Yogi", tree, sc);
         assertTrue(test.handleSearch("Yogi", sc, tree));
         
+        sc = new Scanner("1 2 3 4");
+        test.handleInsert("Bogi", tree, sc);
+        assertTrue(test.handleSearch("Yogi", sc, tree));
 
         sc = new Scanner("1 2 3 4");
         test.handleInsert("Yogi", tree, sc);
@@ -120,7 +127,9 @@ public class ParseTest extends TestCase
         assertTrue(test.handleRegionSearch(0, 1, 50, 40, tree));
         sc = new Scanner("1 2 0 4");
         assertFalse(test.handleRegionSearch(1, 2, 0, 4, tree));
-        
+
+        sc = new Scanner("1 2 0 4");
+        assertTrue(test.handleRegionSearch(1024, 1024, 1, 4, tree));
     }
      /**
       * test intersection methods
@@ -168,4 +177,5 @@ public class ParseTest extends TestCase
         assertTrue(test.parse(sc));
         
     }
+        
 }
