@@ -62,18 +62,18 @@ public class Rectangle
      */
     public boolean isContained(int xVar, int yVar, int w, int h)
     {
-        // Checks to see if x is within bounds
-        if ((x >= xVar && x <= (xVar + w))
-                || (xEnd <= xVar && xEnd >= (xVar + w)))
-        {
-            // Checks to see if y is within bounds
-            return ((y >= yVar && y <= (yVar + h))
-                    || (yEnd <= yVar && yEnd >= (yVar + h)));
-
+        int leftX = Math.max(x, xVar);
+        int rightX = Math.min(xEnd, (xVar + w));
+        // Rectangles don't intersect
+        if (rightX <= leftX) {
+            return false;
         }
         else
         {
-            return false;
+            int topY = Math.max(y, yVar);
+            int bottomY = Math.min(yEnd, (yVar + h));
+            // Rectangles don't intersect
+            return bottomY > topY;
         }
     }
 

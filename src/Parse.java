@@ -232,15 +232,11 @@ public class Parse
             {
                 
                 System.out.println(
-                        "Rectangle Found: " + currNode.element().toString());
-                currNode = tree.getNext(currNode);
+                        "Rectangle found: " + currNode.element().toString());
                 foundOne = true; // I have found a Rectangle
                                  // while I was searching
             }
-            else
-            {
-                currNode = tree.getNext(currNode);
-            }
+            currNode = tree.getNext(currNode);
         }
         if (!foundOne) // If I haven't found a Rectangle while I
                        // was searching, throw an error
