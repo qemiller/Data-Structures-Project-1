@@ -92,7 +92,7 @@ public class ParseTest extends TestCase
      */
     public void testHandleSearch()
     {
-        sc = new Scanner("1 2 3 4");
+        sc = new Scanner("1 5 3 4");
         assertFalse(test.handleSearch("Yogi", sc, tree));
         
         test.handleInsert("Sogi", tree, sc);
@@ -111,6 +111,7 @@ public class ParseTest extends TestCase
         assertTrue(test.handleSearch("Yogi", sc, tree));
         
         assertFalse(test.handleSearch("Josh", sc, tree));
+        assertTrue(test.handleSearch("Yogi", sc, tree));
         
     }
     
