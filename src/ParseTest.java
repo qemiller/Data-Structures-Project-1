@@ -93,26 +93,81 @@ public class ParseTest extends TestCase
     public void testHandleSearch()
     {
         sc = new Scanner("1 5 3 4");
-        assertFalse(test.handleSearch("Yogi", sc, tree));
+        assertFalse(test.handleSearch("Yogi", tree));
+        System.out.println("");
         
-        test.handleInsert("Sogi", tree, sc);
-        assertFalse(test.handleSearch("Yogi", sc, tree));
+        test.handleInsert("Mogi", tree, sc);
+        assertTrue(test.handleSearch("Mogi", tree));
+        System.out.println("");
         
         sc = new Scanner("1 2 3 4");
+        test.handleInsert("Zogi", tree, sc);
+        assertTrue(test.handleSearch("Zogi", tree));
+        System.out.println("");
+        
+        sc = new Scanner("1 2 3 4");
+        test.handleInsert("Zogi", tree, sc);
+        assertTrue(test.handleSearch("Zogi", tree));
+        System.out.println("");
+        
+        sc = new Scanner("1 50 437 678");
         test.handleInsert("Yogi", tree, sc);
-        assertTrue(test.handleSearch("Yogi", sc, tree));
+        assertTrue(test.handleSearch("Yogi", tree));
+        System.out.println("");
+        
+        sc = new Scanner("400 285 700 630");
+        test.handleInsert("Zogi", tree, sc);
+        assertTrue(test.handleSearch("Zogi", tree));
+        System.out.println("");
+        
+        assertFalse(test.handleSearch("Josh", tree));
+        assertTrue(test.handleSearch("Zogi", tree));
+        System.out.println("");
+        
+        sc = new Scanner("4 5 700 630");
+        test.handleInsert("Josh", tree, sc);
+        assertTrue(test.handleSearch("Josh", tree));
+        System.out.println("");
         
         sc = new Scanner("1 2 3 4");
-        test.handleInsert("Bogi", tree, sc);
-        assertTrue(test.handleSearch("Yogi", sc, tree));
-
-        sc = new Scanner("1 2 3 4");
-        test.handleInsert("Yogi", tree, sc);
-        assertTrue(test.handleSearch("Yogi", sc, tree));
+        test.handleInsert("Josh", tree, sc);
+        assertTrue(test.handleSearch("Josh", tree));
+        System.out.println("");
         
-        assertFalse(test.handleSearch("Josh", sc, tree));
-        assertTrue(test.handleSearch("Yogi", sc, tree));
+        sc = new Scanner("50 60 70 80");
+        test.handleInsert("Josh", tree, sc);
+        assertTrue(test.handleSearch("Josh", tree));
+        System.out.println("");
         
+        sc = new Scanner("95 85 700 630");
+        test.handleInsert("Josh", tree, sc);
+        assertTrue(test.handleSearch("Josh", tree));
+        System.out.println("");
+        
+        assertTrue(test.handleSearch("Zogi", tree));
+        System.out.println("");
+        
+        sc = new Scanner("95 85 700 630");
+        test.handleInsert("Karol", tree, sc);
+        assertTrue(test.handleSearch("Karol", tree));
+        System.out.println("");
+        
+        sc = new Scanner("95 85 700 630");
+        test.handleInsert("Mark", tree, sc);
+        assertTrue(test.handleSearch("Mark", tree));
+        System.out.println("");
+        
+        sc = new Scanner("95 85 700 630");
+        test.handleInsert("Alan", tree, sc);
+        
+        sc = new Scanner("95 85 700 630");
+        test.handleInsert("Blan", tree, sc);
+        
+        
+        assertTrue(test.handleSearch("Mark", tree));
+        System.out.println("");
+        
+        tree.dump();
     }
     
     /**
