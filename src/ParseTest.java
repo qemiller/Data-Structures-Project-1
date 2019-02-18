@@ -105,7 +105,7 @@ public class ParseTest extends TestCase
         assertTrue(test.handleSearch("Zogi", tree));
         System.out.println("");
         
-        sc = new Scanner("1 2 3 4");
+        sc = new Scanner("1 2 3 5");
         test.handleInsert("Zogi", tree, sc);
         assertTrue(test.handleSearch("Zogi", tree));
         System.out.println("");

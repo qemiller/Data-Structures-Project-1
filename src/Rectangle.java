@@ -97,7 +97,7 @@ public class Rectangle
         else if (getXEnd() <= r.x) {
             return false;
         }
-        return !(getYEnd() <= r.y);
+        return getYEnd() > r.y;
     }
 
     /**
