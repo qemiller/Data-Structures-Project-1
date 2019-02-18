@@ -88,29 +88,16 @@ public class Rectangle
     // Used for intersections
     public boolean intersects(Rectangle r)
     {
-        int leftX = Math.max(x, r.getXVal());
-        int rightX = Math.min(xEnd, r.getXEnd());
-        // Rectangles don't intersect
-        if (rightX <= leftX) {
+        if (x >= r.getXEnd()) {
             return false;
         }
-        else
-        {
-            int topY = Math.max(y, r.getYVal());
-            int bottomY = Math.min(yEnd, r.getYEnd());
-            // Rectangles don't intersect
-            if (bottomY <= topY)
-            {
-                return false;
-            }
-            // Current node is inside of other node
-            else if (leftX == x && rightX == xEnd
-                    && topY == y && bottomY == yEnd) {
-                return false;
-            }
-            return !(leftX == r.getXVal() && rightX == r.getXEnd()
-                    && topY == r.getYVal() && bottomY == r.getYEnd());
+        else if (y >= r.getYEnd()) {
+            return false;
         }
+        else if (getXEnd() <= r.x) {
+            return false;
+        }
+        return !(getYEnd() <= r.y);
     }
 
     /**

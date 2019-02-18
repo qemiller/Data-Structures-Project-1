@@ -50,11 +50,11 @@ public class RectangleTest extends TestCase
 
         Rectangle intersectFalseRect1 = new Rectangle("intersectTest", 0, 0,
                 500, 500);
-        assertFalse(test.intersects(intersectFalseRect1));
+        assertTrue(test.intersects(intersectFalseRect1));
         
         Rectangle intersectFalseRect2 = new Rectangle("intersectTest", 6, 8, 1,
                 1);
-        assertFalse(test.intersects(intersectFalseRect2));
+        assertTrue(test.intersects(intersectFalseRect2));
         
         Rectangle intersectFalseRect3 = new Rectangle("intersectTest", 1, 2, 10,
                 1);

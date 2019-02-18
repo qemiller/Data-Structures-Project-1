@@ -10,6 +10,7 @@ import java.util.Scanner;
  * @version 2-12-2019
  */
 public class Parse {
+    private Bst<String, Rectangle> parseTree = new Bst<String, Rectangle>();
     /**
      * This will parse the commands and carry out the function on the dictionary
      * 
@@ -18,27 +19,26 @@ public class Parse {
      * @return returns true for testing purposes
      */
     public boolean parse(Scanner sc) {
-        Bst<String, Rectangle> tree = new Bst<String, Rectangle>();
         while (sc.hasNext()) {
             String command = sc.next(); // command read in from file
             switch (command) {
                 case "insert":// deal with the insert command
                     String nameInsert = sc.next();
-                    handleInsert(nameInsert, tree, sc);
+                    handleInsert(nameInsert, parseTree, sc);
                     break;
 
                 case "remove": // deal with the remove command
                     String nameRemove = sc.next();
-                    handleRemove(nameRemove, sc, tree);
+                    handleRemove(nameRemove, sc, parseTree);
                     break;
 
                 case "dump": // deal with the dump command
-                    tree.dump();
+                    parseTree.dump();
                     break;
 
                 case "search": // deal with the search command
                     String nameSearch = sc.next();
-                    handleSearch(nameSearch, tree);
+                    handleSearch(nameSearch, parseTree);
                     break;
 
                 case "regionsearch": // deal with the regionsearch command
@@ -47,11 +47,11 @@ public class Parse {
                     int wRegion = sc.nextInt();
                     int hRegion = sc.nextInt();
                     handleRegionSearch(xRegion, yRegion, wRegion, hRegion,
-                        tree);
+                        parseTree);
                     break;
 
                 case "intersections": // deal with the intersections command
-                    handleIntersections(tree);
+                    handleIntersections(parseTree);
                     break;
 
                 default:
@@ -221,7 +221,6 @@ public class Parse {
         boolean foundOne = false; // Have I found one Rectangle
         // with the given name
         BstNode<String, Rectangle> currNode = tree.getFirst();
-
         // this
         // function
         // returns
@@ -241,6 +240,7 @@ public class Parse {
             }
             currNode = tree.getNext(currNode);
         }
+        
         if (!foundOne) // If I haven't found a Rectangle while I
                        // was searching, throw an error
         {
