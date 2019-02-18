@@ -231,7 +231,7 @@ public class Parse {
                                    // the head,
                                    // keep looking
                                    // search through the tree
-            if (currNode.element().getName() == name) {
+            if (currNode.element().getName().equals(name)) {
 
                 System.out.println("Rectangle found: " + currNode.element()
                     .toString());
