@@ -105,7 +105,7 @@ public class ParseTest extends TestCase
         assertTrue(test.handleSearch("Zogi", tree));
         System.out.println("");
         
-        sc = new Scanner("1 2 3 5");
+        sc = new Scanner("1 2 3 4");
         test.handleInsert("Zogi", tree, sc);
         assertTrue(test.handleSearch("Zogi", tree));
         System.out.println("");
@@ -120,9 +120,11 @@ public class ParseTest extends TestCase
         assertTrue(test.handleSearch("Zogi", tree));
         System.out.println("");
         
-        assertFalse(test.handleSearch("Josh", tree));
+        //Trying to remove the same ones
+        test.handleRemove("Zogi", sc, tree);
         assertTrue(test.handleSearch("Zogi", tree));
-        System.out.println("");
+        test.handleRemove("Zogi", sc, tree);
+        assertFalse(test.handleSearch("Zogi", tree));
         
         sc = new Scanner("4 5 700 630");
         test.handleInsert("Josh", tree, sc);
@@ -140,11 +142,25 @@ public class ParseTest extends TestCase
         System.out.println("");
         
         sc = new Scanner("95 85 700 630");
-        test.handleInsert("Josh", tree, sc);
+        test.handleInsert("Josh1", tree, sc);
         assertTrue(test.handleSearch("Josh", tree));
         System.out.println("");
         
-        assertTrue(test.handleSearch("Zogi", tree));
+        //Trying to remove the same ones
+        test.handleRemove("Josh", sc, tree);
+        assertTrue(test.handleSearch("Josh", tree));
+        System.out.println("");
+        test.handleRemove("Josh", sc, tree);
+        assertTrue(test.handleSearch("Josh", tree));
+        System.out.println("");
+        test.handleRemove("Josh", sc, tree);
+        assertFalse(test.handleSearch("Josh", tree));
+        System.out.println("");
+        assertTrue(test.handleSearch("Josh1", tree));
+        sc = new Scanner("95 85 700 630");
+        test.handleInsert("Josh", tree, sc);
+        assertTrue(test.handleSearch("Josh", tree));
+        assertTrue(test.handleSearch("Josh1", tree));
         System.out.println("");
         
         sc = new Scanner("95 85 700 630");
