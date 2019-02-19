@@ -2,9 +2,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/*Compiler: jdk 1.8.0_201
+/**Compiler: jdk 1.8.0_201
  *Operating System: Windows 10
- *Date Completed:
+ *Date Completed: 2-19-2019
  *
  *This program takes in a set of commands from a txt file
  * that will store and query rectangles.
@@ -15,9 +15,8 @@ import java.util.Scanner;
  *remove by both coordinate and name,
  *which will remove the given rectangle by name or coordinate
  *regionsearch, which will output any rectangle in the given region
- *search by name, which will search the tree for rectngle with the given name
+ *search by name, which will search the tree for rectangle with the given name
  *dump, which will dump the rectangles in the binary tree to the console
- **/
 
 //  On my honor: 
 //
@@ -38,13 +37,13 @@ import java.util.Scanner;
 //  anything during the discussion or modifies any computer file
 //  during the discussion. I have violated neither the spirit nor
 //  letter of this restriction.
-/**
+ * 
  * Rectangle1 takes in and runs commands from a txt file to put and get
  * rectangles from a dictionary. main the main program for Rectangle1
  * 
  * @author Quinton Miller qemiller
  * @author Josh Rehm jrehm135
- * @version 2-12-2019
+ * @version 2-19-2019
  */
 
 public class Rectangle1

@@ -5,7 +5,7 @@ import junit.framework.TestCase;
  * @author Quinton Miller qemiller
  * @author Josh Rehm jrehm135
  *
- * @version 2-12-2019
+ * @version 2-19-2019
  */
 public class ParseTest extends TestCase
 {
@@ -146,16 +146,6 @@ public class ParseTest extends TestCase
         assertTrue(test.handleSearch("Josh", tree));
         System.out.println("");
         
-        //Trying to remove the same ones
-        test.handleRemove("Josh", sc, tree);
-        assertTrue(test.handleSearch("Josh", tree));
-        System.out.println("");
-        test.handleRemove("Josh", sc, tree);
-        assertTrue(test.handleSearch("Josh", tree));
-        System.out.println("");
-        test.handleRemove("Josh", sc, tree);
-        assertFalse(test.handleSearch("Josh", tree));
-        System.out.println("");
         assertTrue(test.handleSearch("Josh1", tree));
         sc = new Scanner("95 85 700 630");
         test.handleInsert("Josh", tree, sc);
@@ -171,10 +161,56 @@ public class ParseTest extends TestCase
         sc = new Scanner("95 85 700 630");
         test.handleInsert("Mark", tree, sc);
         assertTrue(test.handleSearch("Mark", tree));
+        
+        sc = new Scanner("430 285 70 630");
+        test.handleInsert("Mogi", tree, sc);
+        assertFalse(test.handleSearch("Zogi", tree));
         System.out.println("");
+        
+        sc = new Scanner("40 25 70 60");
+        test.handleInsert("Mogi", tree, sc);
+        assertTrue(test.handleSearch("Mogi", tree));
+        System.out.println("");
+        
+        sc = new Scanner("4 5 7 6");
+        test.handleInsert("Mogi", tree, sc);
+        assertTrue(test.handleSearch("Mogi", tree));
+        System.out.println("");
+        
+        sc = new Scanner("4 5 7 6");
+        test.handleInsert("Pogi", tree, sc);
+        assertTrue(test.handleSearch("Pogi", tree));
+        System.out.println("");
+        
+        System.out.println("");
+        tree.dump();
+        
+        test.handleRemove("Josh", sc, tree);
+        System.out.println("");
+        assertTrue(test.handleSearch("Josh", tree));
+        System.out.println("");
+        
+        
+        
+        test.handleRemove("Yogi", sc, tree);
+        System.out.println("");
+        tree.dump();
+        
+        
+        test.handleRemove("Mogi", sc, tree);
+        System.out.println("");
+        tree.dump();
+        
+        
+        System.out.println("");
+        assertTrue(test.handleSearch("Zogi", tree));
+        
         
         sc = new Scanner("95 85 700 630");
         test.handleInsert("Alan", tree, sc);
+        
+        test.handleRemove("Josh", sc, tree);
+        
         
         sc = new Scanner("95 85 700 630");
         test.handleInsert("Blan", tree, sc);
@@ -183,7 +219,6 @@ public class ParseTest extends TestCase
         assertTrue(test.handleSearch("Mark", tree));
         System.out.println("");
         
-        tree.dump();
     }
     
     /**

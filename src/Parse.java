@@ -7,7 +7,7 @@ import java.util.Scanner;
  * This takes program will parse and exectute commands in the text file.
  * 
  * @author Quinton Miller
- * @version 2-12-2019
+ * @version 2-19-2019
  */
 public class Parse {
     private Bst<String, Rectangle> parseTree = new Bst<String, Rectangle>();
